@@ -1,54 +1,83 @@
 import {
-  CalendarEvent,
-  CalendarTime,
-  LayoutDashboard,
-  Report,
+  AddressBook,
+  Book2,
+  BrandBlogger,
+  BrandVite,
+  Briefcase,
+  Category2,
+  Devices,
+  Graph,
+  Settings,
   Users
 } from "tabler-icons-react";
-import routeNames from "../../Routes/routeNames";
+import { routeNames } from "../../Routes/routeNames";
 export const sidebarData = [
   {
     label: "Dashboard",
-    icon: LayoutDashboard,
-    link: routeNames.pysch.dashboard,
+    icon: Graph,
+    link: routeNames.general.landing,
   },
   {
-    label: "User",
+    label: "Services",
+    icon: Category2,
+    links: [
+      { label: "Add Service", link: routeNames.general.landing },
+      { label: "View Services", link: routeNames.general.landing },
+    ],
+  },
+  {
+    label: "Projects",
+    icon: Devices,
+    links: [
+      { label: "Add Project", link: routeNames.general.landing },
+      { label: "View Projects", link: routeNames.general.landing },
+    ],
+  },
+  {
+    label: "Products",
+    icon: BrandVite,
+    links: [
+      { label: "Add Product", link: routeNames.general.landing },
+      { label: "View Products", link: routeNames.general.landing },
+    ],
+  },
+  {
+    label: "Jobs",
+    icon: Briefcase,
+    links: [
+      { label: "Add Service", link: routeNames.general.landing },
+      { label: "View Services", link: routeNames.general.landing },
+    ],
+  },
+  {
+    label: "Team",
     icon: Users,
-    links: [{ label: "View Users", link: routeNames.pysch.allUsers }],
-  },
-  {
-    label: "Appointment",
-    icon: CalendarEvent,
     links: [
-      {
-        label: "Appointment Schedule",
-        link: routeNames.pysch.scheduledAppointments,
-      },
-
-      { label: "Add Appointment", link: routeNames.pysch.addAppoinment },
-      {
-        label: "View Appointments",
-        link: routeNames.pysch.allAppointments,
-      },
-      {
-        label: "Missing Documents",
-        link: routeNames.pysch.missingDocuments,
-      },
+      { label: "Add Service", link: routeNames.general.landing },
+      { label: "View Services", link: routeNames.general.landing },
     ],
   },
   {
-    label: "My Schedule",
-    icon: CalendarTime,
-    links: [{ label: "My Schedule", link: routeNames.pysch.mySchedule }],
+    label: "Blogs",
+    icon: BrandBlogger,
+    links: [
+      { label: "Add Blog", link: routeNames.general.landing },
+      { label: "View Blogs", link: routeNames.general.landing },
+    ],
   },
   {
-    label: "Report",
-    icon: Report,
-    links: [
-      { label: "Private", link: routeNames.pysch.privateReport },
-      { label: "Public", link: routeNames.pysch.publicReport },
-      { label: "Project Reports", link: routeNames.pysch.allProjects },
-    ],
+    label: "Job Applications",
+    icon: Book2,
+    links: [{ label: "View Applications", link: routeNames.general.landing }],
+  },
+  {
+    label: "Contact Us",
+    icon: AddressBook,
+    link: routeNames.general.landing,
+  },
+  {
+    label: "Settings",
+    icon: Settings,
+    link: routeNames.general.landing,
   },
 ];

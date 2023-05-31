@@ -7,10 +7,9 @@ import {
   Text,
   UnstyledButton,
 } from "@mantine/core";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "tabler-icons-react";
-import { UserContext } from "../../contexts/UserContext";
 
 const useStyles = createStyles((theme) => ({
   mainLink: {
@@ -63,7 +62,6 @@ export function LinksGroup({
   const navigate = useNavigate();
   const location = useLocation();
   const hasLinks = Array.isArray(links);
-  const { translate } = useContext(UserContext);
   const { classes, theme } = useStyles();
   const [opened, setOpened] = useState(initiallyOpened || false);
   const ChevronIcon = theme.dir === "ltr" ? ChevronRight : ChevronLeft;
@@ -113,7 +111,7 @@ export function LinksGroup({
             : "rgb(0,0,0,0.9)"
         }
       >
-        {translate(link.label)}
+        {link.label}
       </Text>
     </Flex>
   ));
@@ -162,7 +160,7 @@ export function LinksGroup({
           >
             <Icon size={18} />
             <Box ml="md">
-              {ind ? ind + ". " + translate(label) : translate(label)}
+              {ind ? ind + ". " + label : label}
             </Box>
           </Text>
           {hasLinks && (

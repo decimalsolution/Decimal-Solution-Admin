@@ -10,9 +10,7 @@ export const UserProvider = ({ children }) => {
     lastName: "",
     id: userData?.userId,
     email: userData?.email,
-    ngoId: userData?.ngoId,
     phoneNumber: userData?.phoneNumber,
-    role: userData?.role,
     token: userData?.token,
   });
   const value = { user, setUser };
