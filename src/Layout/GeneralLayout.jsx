@@ -1,6 +1,7 @@
 import {
   AppShell,
   Burger,
+  Container,
   Header,
   MediaQuery,
   Navbar,
@@ -24,7 +25,7 @@ const GeneralLayout = () => {
     <AppShell
       styles={{
         main: {
-          background: theme.colors.background,
+          background: "rgb(0,0,0,0.05)",
         },
       }}
       navbarOffsetBreakpoint="sm"
@@ -57,7 +58,9 @@ const GeneralLayout = () => {
         </Header>
       }
     >
-      {allowed() && <Outlet />}
+      <Container bg="white" p="lg" style={{ borderRadius: "10px" }}>
+        {allowed() && <Outlet />}
+      </Container>
     </AppShell>
   ) : (
     <Navigate to={routeNames.general.landing} />

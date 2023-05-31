@@ -21,7 +21,7 @@ export const sidebarData = [
     label: "Services",
     icon: Category2,
     links: [
-      { label: "Add Service", link: routeNames.general.landing },
+      { label: "Add Service", link: routeNames.general.addService },
       { label: "View Services", link: routeNames.general.landing },
     ],
   },
