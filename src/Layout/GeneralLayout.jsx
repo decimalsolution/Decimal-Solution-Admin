@@ -1,59 +1,74 @@
 import {
-    AppShell,
-    Burger,
-    Footer,
-    Header,
-    MediaQuery,
-    Navbar,
-    Text,
-    useMantineTheme
+  AppShell,
+  Burger,
+  Container,
+  Group,
+  MediaQuery,
+  Navbar,
+  useMantineTheme,
 } from "@mantine/core";
-import { useState } from "react";
-import { Header as HeaderCustom } from "../components/Header";
+import { useContext, useState } from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import { SideBar } from "../Components/Sidebar/Sidebar";
+import { routeNames } from "../Routes/routeNames";
+import { Header } from "../components/Header";
+import { UserContext } from "../contexts/UserContext";
 
-export default function GeneralLayout() {
+const GeneralLayout = () => {
   const theme = useMantineTheme();
   const [opened, setOpened] = useState(false);
-  return (
+  const { user } = useContext(UserContext);
+
+  const allowed = () => {
+    return true;
+  };
+
+  return user?.role && user?.token ? (
     <AppShell
       styles={{
         main: {
-          background:
-            theme.colorScheme === "dark"
-              ? theme.colors.dark[8]
-              : theme.colors.gray[0],
+          background: theme.colors.background,
         },
       }}
-      footer={
-        <Footer height={60} p="md">
-          Application footer
-        </Footer>
-      }
+      navbarOffsetBreakpoint="sm"
+      asideOffsetBreakpoint="sm"
       navbar={
-        <Navbar p="md" hiddenBreakpoint="sm" hidden={!opened} width={{ sm: 200, lg: 300 }}>
-          <Text>Application navbar</Text>
+        <Navbar
+          p="md"
+          hiddenBreakpoint="sm"
+          hidden={!opened}
+          width={{ sm: 320, lg: 320 }}
+          bg={""}
+        >
+          <SideBar opened={opened} setOpened={setOpened} />
         </Navbar>
       }
-      header={
-        <Header height={{ base: 50, md: 70 }} p="md">
-          <div
-            style={{ display: "flex", alignItems: "center", height: "100%" }}
-          >
-            <MediaQuery largerThan="sm" styles={{ display: "none" }}>
-              <Burger
-                opened={opened}
-                onClick={() => setOpened((o) => !o)}
-                size="sm"
-                color={theme.colors.gray[6]}
-                mr="xl"
-              />
-            </MediaQuery>
-            <HeaderCustom />
-          </div>
-        </Header>
-      }
+      footer={<></>}
+      header={<></>}
     >
-      <Text>Resize app to see responsive navbar in action</Text>
+      <Container mih="100%" size="xl" p={"0px"}>
+        <Group noWrap>
+          <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+            <Burger
+              opened={opened}
+              onClick={() => setOpened((o) => !o)}
+              size="sm"
+              color={theme.colors.black}
+            />
+          </MediaQuery>
+          <Header />
+        </Group>
+        <Container
+          bg={theme.colors.container}
+          size="xl"
+          style={{ borderRadius: "20px", border: "1px solid rgb(0,0,0,0.1)" }}
+        >
+          {allowed() && <Outlet />}
+        </Container>
+      </Container>
     </AppShell>
+  ) : (
+    <Navigate to={routeNames.general.landing} />
   );
-}
+};
+export default GeneralLayout;
