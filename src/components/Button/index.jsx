@@ -1,5 +1,4 @@
 import { Button as ButtonMantine, createStyles } from "@mantine/core";
-
 const useStyles = createStyles((theme, { bg, primary, disabled }) => ({
   rootPrimary: {
     backgroundColor: primary

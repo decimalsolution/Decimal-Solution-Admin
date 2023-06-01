@@ -30,6 +30,7 @@ const InputField = ({
   onChange,
   form,
   value,
+  size="md",
   validateName,
   disabled,
   onKeyDown,
@@ -45,6 +46,7 @@ const InputField = ({
       withAsterisk={required ? true : false}
       label={label}
       pb={pb}
+      size={size}
       type={type}
       maxLength={maxLength}
       value={value}

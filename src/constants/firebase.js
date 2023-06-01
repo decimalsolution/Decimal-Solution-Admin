@@ -1,7 +1,12 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
-import { getStorage } from "firebase/storage";
+import {
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAqi8EioZAZgTT5MAhxqBUqYTpcEPUtO3M",
@@ -18,12 +23,7 @@ export const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
 // const analytics = getAnalytics(app);
 
-export const uploadSingleFile = ({
-  file,
-  folderName,
-  urlSetter,
-  progressSetter,
-}) => {
+export const uploadSingleFile = ({ file, folderName, urlSetter }) => {
   folderName = folderName || "uploads";
   if (!file) return;
   const storageRef = ref(storage, `/${folderName}/${file.name}`);
@@ -34,7 +34,6 @@ export const uploadSingleFile = ({
       const prog = Math.round(
         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
       );
-      setProgress && setProgress(prog);
       // setProgress(prog);
     },
     (err) => console.log(err),

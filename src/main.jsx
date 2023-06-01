@@ -5,6 +5,17 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import { UserProvider } from "./contexts/UserContext.jsx";
 import { MantineProvider } from "@mantine/core";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Notifications } from "@mantine/notifications";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: true,
+      cacheTime: 30000,
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -26,10 +37,24 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             ],
           },
           primaryColor: "primary",
+          globalStyles: (theme) => ({
+            ".mantine-Modal-title": {
+              margin: "auto",
+              fontWeight: "bold",
+              color: "rgb(0,0,0,0.5)",
+            },
+          }),
         }}
       >
         <UserProvider>
-          <App />
+          <QueryClientProvider client={queryClient}>
+            <Notifications
+              position="top-center"
+              zIndex={2077}
+              style={{ marginTop: "60px" }}
+            />
+            <App />
+          </QueryClientProvider>
         </UserProvider>
       </MantineProvider>
     </BrowserRouter>

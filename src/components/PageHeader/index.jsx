@@ -8,6 +8,7 @@ const PageHeader = ({ label, ...props }) => {
       size={isMobile ? 30 : 40}
       weight={700}
       align="center"
+      mb="md"
       {...props}
       color="rgb(0,0,0,0.9)"
     >

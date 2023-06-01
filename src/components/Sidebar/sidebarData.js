@@ -22,7 +22,7 @@ export const sidebarData = [
     icon: Category2,
     links: [
       { label: "Add Service", link: routeNames.general.addService },
-      { label: "View Services", link: routeNames.general.landing },
+      { label: "View Services", link: routeNames.general.viewService },
     ],
   },
   {

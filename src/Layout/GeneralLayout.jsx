@@ -58,7 +58,7 @@ const GeneralLayout = () => {
         </Header>
       }
     >
-      <Container bg="white" p="lg" style={{ borderRadius: "10px" }}>
+      <Container bg="white" m="lg" p="md" size={"xl"} style={{ borderRadius: "10px" }}>
         {allowed() && <Outlet />}
       </Container>
     </AppShell>
