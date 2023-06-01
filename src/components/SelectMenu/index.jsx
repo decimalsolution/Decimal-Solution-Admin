@@ -8,7 +8,7 @@ const SelectMenu = (
     searchable,
     required,
     label,
-    pb,
+    pb="sm",
     data,
     clearable,
     withAsterisk,

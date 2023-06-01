@@ -40,6 +40,8 @@ const DataGrid = ({ columns, data, type, ...props }) => {
       </Anchor>
     );
   }, [data, type]);
+
+  
   return (
     <Box
       style={{

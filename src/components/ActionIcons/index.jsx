@@ -12,7 +12,6 @@ import DeleteModal from "../DeleteModal";
 import ViewModal from "../ViewModal";
 
 const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
-
   const queryClient = useQueryClient();
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
@@ -29,6 +28,14 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
     switch (type) {
       case "service":
         navigate(routeNames.general.addService, {
+          state: {
+            isUpdate: true,
+            data: rowData,
+          },
+        });
+        break;
+      case "project":
+        navigate(routeNames.general.addProject, {
           state: {
             isUpdate: true,
             data: rowData,
@@ -57,6 +64,8 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
           color: "green",
         });
         if (type === "service") queryClient.invalidateQueries("fetchServices");
+        else if (type === "project")
+          queryClient.invalidateQueries("fetchProjects");
       },
       onError: (res) => {
         showNotification({

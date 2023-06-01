@@ -3,5 +3,7 @@ export const routeNames = {
     landing: "/",
     addService: "/add-service",
     viewService: "/view-services",
+    addProject: "/add-project",
+    viewProjects: "/view-projects",
   },
 };

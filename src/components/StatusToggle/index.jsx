@@ -4,6 +4,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { backendUrl } from "../../constants/constants";
 import { UserContext } from "../../contexts/UserContext";
+import { showNotification } from "@mantine/notifications";
 
 const StatusToggle = ({ status, id, type, queryName }) => {
   const { user } = useContext(UserContext);
@@ -23,8 +24,19 @@ const StatusToggle = ({ status, id, type, queryName }) => {
       onSuccess: (res) => {
         queryName && queryClient.invalidateQueries(queryName);
         setBlocked(blocked ? "unBlocked" : "Block");
+        showNotification({
+          title: "Success",
+          message: `${type} status changed successfully`,
+          color: "green",
+        });
       },
-      onError: (res) => {},
+      onError: (res) => {
+        showNotification({
+          title: "Error",
+          message: `Something went wrong`,
+          color: "red",
+        });
+      },
     }
   );
 

@@ -29,8 +29,8 @@ export const sidebarData = [
     label: "Projects",
     icon: Devices,
     links: [
-      { label: "Add Project", link: routeNames.general.landing },
-      { label: "View Projects", link: routeNames.general.landing },
+      { label: "Add Project", link: routeNames.general.addProject },
+      { label: "View Projects", link: routeNames.general.viewProjects },
     ],
   },
   {

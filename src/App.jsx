@@ -4,6 +4,8 @@ import { routeNames } from "./Routes/routeNames";
 import GeneralLayout from "./Layout/GeneralLayout";
 import { AddService } from "./Pages/Services/AddService";
 import ViewServices from "./Pages/Services/ViewSerivces";
+import { AddProject } from "./Pages/Projects/AddProject";
+import ViewProjects from "./Pages/Projects/ViewProjects";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
           path={routeNames.general.viewService}
           element={<ViewServices />}
         />
+        <Route path={routeNames.general.addProject} element={<AddProject />} />
+        <Route path={routeNames.general.viewProjects} element={<ViewProjects />} />
       </Route>
     </Routes>
   );

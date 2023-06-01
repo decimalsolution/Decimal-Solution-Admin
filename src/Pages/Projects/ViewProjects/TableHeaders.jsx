@@ -1,7 +1,7 @@
 import ActionIcons from "../../../components/ActionIcons";
 import StatusToggle from "../../../components/StatusToggle";
 import TableImageView from "../../../components/TableImageView";
-import ViewService from "./ViewService";
+import ViewProject from "./ViewProject";
 
 export const Columns = [
   {
@@ -21,15 +21,20 @@ export const Columns = [
     name: "Title",
     selector: (row) => row.title,
     sortable: true,
+  },
+  {
+    name: "Category",
+    selector: (row) => row.category.title,
+    sortable: true,
     // center: true,
     width: "250px",
   },
   {
-    name: "Project Link",
+    name: "Link",
     selector: (row) => row.link,
     sortable: true,
     // center: true,
-    // width: "250px",
+    width: "200px",
   },
   {
     name: "Status",
@@ -41,8 +46,8 @@ export const Columns = [
       <StatusToggle
         status={row.blocked}
         id={row._id}
-        type={"service"}
-        queryName="fetchServices"
+        type={"project"}
+        queryName="fetchProjects"
       />
     ),
   },
@@ -55,8 +60,8 @@ export const Columns = [
         view={true}
         del={true}
         edit={true}
-        viewData={<ViewService rowData={row} />}
-        type="service"
+        viewData={<ViewProject rowData={row} />}
+        type="project"
       />
     ),
   },
