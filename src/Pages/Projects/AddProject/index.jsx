@@ -172,7 +172,7 @@ export const AddProject = () => {
           <Button
             label={"Cancel"}
             variant={"outline"}
-            onClick={() => navigate(routeNames.general.viewService)}
+            onClick={() => navigate(routeNames.general.viewProjects)}
           />
           <Button
             label={state?.isUpdate ? "Edit Project" : "Add Project"}
