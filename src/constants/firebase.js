@@ -23,7 +23,7 @@ export const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
 // const analytics = getAnalytics(app);
 
-export const uploadSingleFile = ({ file, folderName, urlSetter }) => {
+export const uploadSingleFile = ({ file, folderName, urlSetter, setProgress }) => {
   folderName = folderName || "uploads";
   if (!file) return;
   const storageRef = ref(storage, `/${folderName}/${file.name}`);
@@ -34,7 +34,7 @@ export const uploadSingleFile = ({ file, folderName, urlSetter }) => {
       const prog = Math.round(
         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
       );
-      // setProgress(prog);
+      setProgress(prog);
     },
     (err) => console.log(err),
     () => {

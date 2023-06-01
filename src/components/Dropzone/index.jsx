@@ -1,13 +1,14 @@
-import { ActionIcon, Box, Text } from "@mantine/core";
+import { ActionIcon, Box, Image, Loader, Text } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useDropzone } from "react-dropzone";
 import { Paperclip, Photo, X } from "tabler-icons-react";
 import { uploadSingleFile } from "../../constants/firebase";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function DropZone({ form, name, folderName, label }) {
   const isMobile = useMediaQuery("(max-width: 820px)");
   const [url, urlSetter] = useState("");
+  const [progress, setProgress] = useState("");
   const {
     getRootProps,
     getInputProps,
@@ -21,11 +22,14 @@ export default function DropZone({ form, name, folderName, label }) {
     maxFiles: 1,
     onDrop: (acceptedFiles) => {
       const file = acceptedFiles[0];
-      uploadSingleFile({ file, folderName, urlSetter });
+      uploadSingleFile({ file, folderName, urlSetter, setProgress });
       // file.preview = URL.createObjectURL(file);
       form.setFieldValue(name, url);
     },
   });
+  useEffect(() => {
+    progress === 100 && form.setFieldValue(name, url);
+  }, [name, progress, url]);
   return (
     <Box
       sx={{
@@ -85,16 +89,21 @@ export default function DropZone({ form, name, folderName, label }) {
             position: "relative",
           }}
         >
-          <img
-            src={form.values[name]}
-            alt="preview"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
-
+          {progress === 100 ? (
+            <Image
+              src={form.values[name]}
+              alt="preview"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+              withPlaceholder
+              placeholder={<Loader h={"200px"} m={"auto"}/>}
+            />
+          ) : (
+            <Loader h={"100%"} />
+          )}
           <ActionIcon
             style={{
               position: "absolute",
