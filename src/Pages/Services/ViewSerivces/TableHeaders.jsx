@@ -63,6 +63,7 @@ export const Columns = [
 ];
 
 export const filterbyStatus = [
+  { label: "All", value: null },
   { label: "Blocked", value: true },
   { label: "Unblocked", value: false },
 ];

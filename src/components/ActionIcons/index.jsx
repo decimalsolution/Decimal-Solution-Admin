@@ -41,7 +41,7 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
   //to delete
   const handleDelete = useMutation(
     async () => {
-      const link = backendUrl + `/  api/v1/${type}/${rowData._id}`;
+      const link = backendUrl + `/api/v1/${type}/${rowData._id}`;
       return axios.delete(link, {
         headers: {
           authorization: `bearer ${user.token}`,

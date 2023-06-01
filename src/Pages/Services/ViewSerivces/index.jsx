@@ -20,7 +20,7 @@ const ViewServices = () => {
   const { user } = useContext(UserContext);
   const [tableData, setTableData] = useState([]);
   const [search, setSearch] = useState("");
-  const [blockedFilter, setBlockedFilter] = useState(false);
+  const [blockedFilter, setBlockedFilter] = useState(null);
 
   const { status } = useQuery(
     "fetchServices",
@@ -37,11 +37,15 @@ const ViewServices = () => {
       },
     }
   );
-  const filteredItems = tableData.filter(
-    (item) =>
-      item?.title?.toLowerCase().includes(search.toLowerCase()) &&
-      item?.blocked === blockedFilter
-  );
+  const filteredItems = tableData.filter((item) => {
+    if (blockedFilter === null)
+      return item?.title?.toLowerCase().includes(search.toLowerCase());
+    else
+      return (
+        item?.title?.toLowerCase().includes(search.toLowerCase()) &&
+        item?.blocked === blockedFilter
+      );
+  });
   const handleClearFilters = () => {
     setSearch("");
     setBlockedFilter(false);
@@ -53,8 +57,9 @@ const ViewServices = () => {
         <Grid p="xs">
           <Grid.Col md="6" lg="3">
             <InputField
-              placeholder={"Search VIN"}
+              placeholder={"Search Title"}
               leftIcon="search"
+              value={search}
               onChange={(v) => setSearch(v.target.value)}
             />
           </Grid.Col>

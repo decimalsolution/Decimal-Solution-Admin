@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 export default function DropZone({ form, name, folderName, label }) {
   const isMobile = useMediaQuery("(max-width: 820px)");
   const [url, urlSetter] = useState("");
-  const [progress, setProgress] = useState("");
+  const [progress, setProgress] = useState(null);
   const {
     getRootProps,
     getInputProps,
@@ -89,7 +89,7 @@ export default function DropZone({ form, name, folderName, label }) {
             position: "relative",
           }}
         >
-          {progress === 100 ? (
+          {progress === null || progress === 100 ? (
             <Image
               src={form.values[name]}
               alt="preview"
@@ -99,7 +99,7 @@ export default function DropZone({ form, name, folderName, label }) {
                 objectFit: "cover",
               }}
               withPlaceholder
-              placeholder={<Loader h={"200px"} m={"auto"}/>}
+              placeholder={<Loader h={"200px"} m={"auto"} />}
             />
           ) : (
             <Loader h={"100%"} />
