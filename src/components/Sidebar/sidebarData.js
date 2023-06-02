@@ -37,16 +37,16 @@ export const sidebarData = [
     label: "Products",
     icon: BrandVite,
     links: [
-      { label: "Add Product", link: routeNames.general.landing },
-      { label: "View Products", link: routeNames.general.landing },
+      { label: "Add Product", link: routeNames.general.addProduct },
+      { label: "View Products", link: routeNames.general.viewProducts },
     ],
   },
   {
     label: "Jobs",
     icon: Briefcase,
     links: [
-      { label: "Add Service", link: routeNames.general.landing },
-      { label: "View Services", link: routeNames.general.landing },
+      { label: "Add Job", link: routeNames.general.addJob },
+      { label: "View Jobs", link: routeNames.general.viewJobs },
     ],
   },
   {

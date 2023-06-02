@@ -42,6 +42,14 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
           },
         });
         break;
+      case "product":
+        navigate(routeNames.general.addProduct, {
+          state: {
+            isUpdate: true,
+            data: rowData,
+          },
+        });
+        break;
     }
   };
 
@@ -66,6 +74,8 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
         if (type === "service") queryClient.invalidateQueries("fetchServices");
         else if (type === "project")
           queryClient.invalidateQueries("fetchProjects");
+        else if (type === "product")
+          queryClient.invalidateQueries("fetchProducts");
       },
       onError: (res) => {
         showNotification({

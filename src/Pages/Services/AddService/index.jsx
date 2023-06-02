@@ -89,7 +89,7 @@ export const AddService = () => {
   );
   return (
     <Container fluid>
-      <PageHeader label={"Add Service"} />
+      <PageHeader label={state?.isUpdate ? "Edit Service" : "Add Service"} />
       <form
         onSubmit={form.onSubmit((values) => handleAddService.mutate(values))}
       >

@@ -15,7 +15,7 @@ import { useLocation, useNavigate } from "react-router";
 import { routeNames } from "../../../Routes/routeNames";
 import SelectMenu from "../../../components/SelectMenu";
 
-export const AddProject = () => {
+export const AddProduct = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   let { state } = useLocation();
@@ -26,35 +26,26 @@ export const AddProject = () => {
     initialValues: {
       title: "",
       description: "",
-      shortDescription: "",
+      // shortDescription: "",
       coverImage: null,
-      homeImage: null,
       link: "",
-      category: "",
+      // homeImage: null,
     },
 
     validate: {
       title: (value) =>
         value?.length > 1 && value?.length < 30
           ? null
-          : "Please enter project title between 2 to 30 characters",
+          : "Please enter product title between 2 to 30 characters",
       description: (value) =>
-        value?.length > 0 ? null : "Please enter project description",
-      shortDescription: (value) =>
-        value?.length > 0 ? null : "Please enter short description",
+        value?.length > 0 ? null : "Please enter product description",
+      // shortDescription: (value) =>
+      //   value?.length > 0 ? null : "Please enter short description",
       coverImage: (value) => (value ? null : "Please upload a cover Image"),
-      homeImage: (value) => (value ? null : "Please upload a home Image"),
       link: (value) => (value ? null : "Please enter project link"),
-      category: (value) => (value ? null : "Please select category"),
+      // homeImage: (value) => (value ? null : "Please upload a home Image"),
     },
   });
-
-  useEffect(() => {
-    if (state?.isUpdate) {
-      form.setValues(state.data);
-      form.setFieldValue("category", state.data.category._id);
-    }
-  }, [state]);
 
   //categories
   const { status } = useQuery(
@@ -72,11 +63,18 @@ export const AddProject = () => {
     }
   );
 
+
+  useEffect(() => {
+    if (state?.isUpdate) {
+      form.setValues(state.data);
+      form.setFieldValue("category", state.data.category._id);
+    }
+  }, [state]);
   const handleAddService = useMutation(
     (values) => {
       if (state?.isUpdate)
         return axios.patch(
-          `${backendUrl + `/api/v1/project/${state?.data?._id}`}`,
+          `${backendUrl + `/api/v1/product/${state?.data?._id}`}`,
           values,
           {
             headers: {
@@ -85,7 +83,7 @@ export const AddProject = () => {
           }
         );
       else
-        return axios.post(`${backendUrl + "/api/v1/project"}`, values, {
+        return axios.post(`${backendUrl + "/api/v1/product"}`, values, {
           headers: {
             authorization: `bearer ${user.token}`,
           },
@@ -99,7 +97,7 @@ export const AddProject = () => {
             message: response?.data?.message,
             color: "green",
           });
-          navigate(routeNames.general.viewProjects);
+          navigate(routeNames.general.viewProducts);
           form.reset();
         } else {
           showNotification({
@@ -113,13 +111,13 @@ export const AddProject = () => {
   );
   return (
     <Container fluid>
-      <PageHeader label={state?.isUpdate ? "Edit Project" : "Add Project"} />
+      <PageHeader label={state?.isUpdate ? "Edit Product" : "Add Product"} />
       <form
         onSubmit={form.onSubmit((values) => handleAddService.mutate(values))}
       >
         <InputField
           label={"Title"}
-          placeholder={"Enter Project Title"}
+          placeholder={"Enter Product Title"}
           form={form}
           withAsterisk
           validateName={"title"}
@@ -139,14 +137,14 @@ export const AddProject = () => {
           withAsterisk
           validateName={"link"}
         />
-        <TextArea
+        {/* <TextArea
           label={"Short Description"}
           placeholder={"Enter Short Description"}
           rows="2"
           form={form}
           withAsterisk
           validateName={"shortDescription"}
-        />
+        /> */}
         <TextArea
           label={"Detail Description"}
           placeholder={"Enter Detailed Description"}
@@ -162,21 +160,21 @@ export const AddProject = () => {
             name={"coverImage"}
             label="Cover Image"
           />
-          <DropZone
+          {/* <DropZone
             form={form}
             folderName={"service"}
             name={"homeImage"}
             label="Home Image"
-          />
+          /> */}
         </Group>
         <Group position="right" mt={"md"}>
           <Button
             label={"Cancel"}
             variant={"outline"}
-            onClick={() => navigate(routeNames.general.viewProjects)}
+            onClick={() => navigate(routeNames.general.viewProducts)}
           />
           <Button
-            label={state?.isUpdate ? "Edit Project" : "Add Project"}
+            label={state?.isUpdate ? "Edit Product" : "Add Product"}
             type={"submit"}
             loading={handleAddService.isLoading}
           />

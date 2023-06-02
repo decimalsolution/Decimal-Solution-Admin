@@ -9,18 +9,18 @@ const TableImageView = ({ src }) => {
         position: "relative",
       }}
     >
-      <HoverCard shadow="md">
-        <HoverCard.Target width={40}>
+      {/* <HoverCard shadow="md">
+        <HoverCard.Target width={40}> */}
           <Image
             src={src}
-            fit="cover"
+            fit="fill"
             height={40}
             width={40}
             radius={"50%"}
             alt="IMG"
             withPlaceholder
           />
-        </HoverCard.Target>
+        {/* </HoverCard.Target>
         <HoverCard.Dropdown
           style={{
             position: "absolute",
@@ -29,7 +29,7 @@ const TableImageView = ({ src }) => {
         >
           <Image src={src} fit="cover" width={300} />
         </HoverCard.Dropdown>
-      </HoverCard>
+      </HoverCard> */}
     </Group>
   );
 };

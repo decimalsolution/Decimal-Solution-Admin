@@ -5,5 +5,9 @@ export const routeNames = {
     viewService: "/view-services",
     addProject: "/add-project",
     viewProjects: "/view-projects",
+    addProduct: "/add-product",
+    viewProducts: "/view-products",
+    addJob: "/add-job",
+    viewJobs: "/view-jobs",
   },
 };
