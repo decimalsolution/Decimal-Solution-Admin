@@ -8,7 +8,7 @@ const ViewService = ({ rowData }) => {
         src={rowData?.coverImage}
         width="200px"
         height={"200px"}
-        fit="cover"
+        fit="fill"
         style={{
           border: `5px solid ${theme.primaryColor}`,
         }}

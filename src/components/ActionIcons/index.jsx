@@ -50,6 +50,14 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
           },
         });
         break;
+      case "jobs":
+        navigate(routeNames.general.addJob, {
+          state: {
+            isUpdate: true,
+            data: rowData,
+          },
+        });
+        break;
     }
   };
 
@@ -68,7 +76,7 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
         setOpenDelete(false);
         showNotification({
           title: "success",
-          message: "Service Deleted Successfully",
+          message: `${type} Deleted Successfully`,
           color: "green",
         });
         if (type === "service") queryClient.invalidateQueries("fetchServices");
@@ -76,6 +84,7 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
           queryClient.invalidateQueries("fetchProjects");
         else if (type === "product")
           queryClient.invalidateQueries("fetchProducts");
+        else if (type === "jobs") queryClient.invalidateQueries("fetchJobs");
       },
       onError: (res) => {
         showNotification({

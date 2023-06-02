@@ -8,7 +8,7 @@ const ViewProduct = ({ rowData }) => {
         src={rowData?.coverImage}
         width="200px"
         height={"200px"}
-        fit="cover"
+        fit="fill"
         style={{
           border: `5px solid ${theme.primaryColor}`,
         }}
@@ -24,7 +24,7 @@ const ViewProduct = ({ rowData }) => {
         {rowData?.title}
       </Text>
       <Title order={3}>Product Category</Title>
-      <Text align="justify">{rowData?.category.title}</Text>
+      <Text align="justify">{rowData?.category?.title}</Text>
       <Title order={3}>Product Link</Title>
       <Text align="justify">{rowData?.link}</Text>
       {/* <Title order={3}>Short Description</Title>

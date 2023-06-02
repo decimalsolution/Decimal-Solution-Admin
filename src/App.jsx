@@ -8,6 +8,8 @@ import { AddProject } from "./Pages/Projects/AddProject";
 import ViewProjects from "./Pages/Projects/ViewProjects";
 import { AddProduct } from "./Pages/Products/AddProduct";
 import ViewProducts from "./Pages/Products/ViewProducts";
+import { AddJob } from "./Pages/Jobs/AddJob";
+import ViewJobs from "./Pages/Jobs/ViewJobs";
 
 function App() {
   return (
@@ -27,6 +29,11 @@ function App() {
         <Route
           path={routeNames.general.viewProducts}
           element={<ViewProducts />}
+        />
+        <Route path={routeNames.general.addJob} element={<AddJob />} />
+        <Route
+          path={routeNames.general.viewJobs}
+          element={<ViewJobs />}
         />
       </Route>
     </Routes>
