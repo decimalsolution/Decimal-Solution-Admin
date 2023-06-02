@@ -10,6 +10,8 @@ import { AddProduct } from "./Pages/Products/AddProduct";
 import ViewProducts from "./Pages/Products/ViewProducts";
 import { AddJob } from "./Pages/Jobs/AddJob";
 import ViewJobs from "./Pages/Jobs/ViewJobs";
+import { AddTeam } from "./Pages/Team/AddTeam";
+import ViewTeams from "./Pages/Team/ViewTeamMembers";
 
 function App() {
   return (
@@ -31,10 +33,9 @@ function App() {
           element={<ViewProducts />}
         />
         <Route path={routeNames.general.addJob} element={<AddJob />} />
-        <Route
-          path={routeNames.general.viewJobs}
-          element={<ViewJobs />}
-        />
+        <Route path={routeNames.general.viewJobs} element={<ViewJobs />} />
+        <Route path={routeNames.general.addTeam} element={<AddTeam />} />
+        <Route path={routeNames.general.viewTeams} element={<ViewTeams />} />
       </Route>
     </Routes>
   );
