@@ -11,7 +11,8 @@ export const UserProvider = ({ children }) => {
     id: userData?.userId,
     email: userData?.email,
     phoneNumber: userData?.phoneNumber,
-    token: userData?.token,
+    token:
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdXBlckFkbWluVXNlcklkIjoiNjQ3NTlhODA4NmExNmJhOGFhNGI0NDkzIiwiaWF0IjoxNjg1NzEzMDAxLCJleHAiOjE2ODU3OTk0MDF9.Lkn6kAyhW-sVRNqWIv5AuWSlusRP7mu64IEuERLset0",
   });
   const value = { user, setUser };
 

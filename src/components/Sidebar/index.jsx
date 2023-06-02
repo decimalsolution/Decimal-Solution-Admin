@@ -31,37 +31,10 @@ const useStyles = createStyles((theme) => ({
     borderRadius: "10px",
   },
 
-  linksInner: {
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.xl,
-    // maxHeight: "75vh",
-    // overflow: "auto",
-  },
-  logo: {
-    display: "flex",
-    alignItems: "center",
-    color: "black",
-    gap: "5px",
-    marginTop: "20px",
-    justifyContent: "center",
-    fontWeight: "700",
-    fontSize: "30px",
-    ":hover": {
-      cursor: "pointer",
-    },
-  },
-  footer: {
-    backgroundColor: "white",
-    // backgroundColor:
-    //   role === "Social Worker" ? "pink" : role === "Admin" ? "white" : "teal",
-    borderTop: "1px solid rgb(0,0,0,0.05)",
-    bottom: "10px",
-    width: "100%",
-    position: "absolute",
-  },
+  linksInner: {},
 }));
 
-export function SideBar({setOpened, opened }) {
+export function SideBar({ setOpened, opened }) {
   const { user } = useContext(UserContext);
   const { classes } = useStyles();
   const [globalOpen, setGlobalOpen] = useState("");

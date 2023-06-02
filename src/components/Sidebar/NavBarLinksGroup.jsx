@@ -75,30 +75,31 @@ export function LinksGroup({
       component={Link}
       gap="sm"
       className={classes.link}
+      p={"sm"}
       to={link.link}
       onClick={() => setSideOpen(false)}
       key={link.label}
       color={
         location?.pathname === link.link && label === globalOpen
-          ? theme.colors.blue
+          ? theme.colors.primary[9]
           : "rgb(0,0,0,0.9)"
       }
       sx={{
         borderRight:
           location?.pathname === link.link &&
           label === globalOpen &&
-          `10px solid ${theme.colors.blue[9]}`,
+          `10px solid ${theme.colors.primary[9]}`,
       }}
       bg={
         location?.pathname === link.link && label === globalOpen
-          ? theme.colors.blueSide
+          ? theme.colors.primary[0]
           : ""
       }
     >
       <Text
         color={
           location?.pathname === link.link && label === globalOpen
-            ? theme.colors.blue
+            ? theme.colors.primary[9]
             : "rgb(0,0,0,0.9)"
         }
       >
@@ -107,7 +108,7 @@ export function LinksGroup({
       <Text
         color={
           location?.pathname === link.link && label === globalOpen
-            ? theme.colors.blue
+            ? theme.colors.primary[9]
             : "rgb(0,0,0,0.9)"
         }
       >
@@ -136,32 +137,38 @@ export function LinksGroup({
           borderRight:
             location?.pathname === link &&
             label === globalOpen &&
-            `10px solid ${theme.colors.blue[9]}`,
+            `10px solid ${theme.colors.primary[9]}`,
         }}
         bg={
           location?.pathname === link && label === globalOpen
-            ? theme.colors.blueSide
+            ? theme.colors.primary[0]
             : ""
         }
       >
         <Group
           position="apart"
           spacing={0}
+          p={"sm"}
           onClick={() => link && navigate(link)}
         >
           <Text
             color={
               location?.pathname === link && label === globalOpen
-                ? theme.colors.blue
+                ? theme.colors.primary[9]
                 : "rgb(0,0,0,0.9)"
             }
             sx={{ display: "flex", alignItems: "center" }}
             fw={"500"}
           >
-            <Icon size={18} />
-            <Box ml="md">
-              {ind ? ind + ". " + label : label}
-            </Box>
+            <Icon
+              size={18}
+              color={
+                location?.pathname === link && label === globalOpen
+                  ? theme.colors.primary[9]
+                  : "rgb(0,0,0,0.9)"
+              }
+            />
+            <Box ml="md">{ind ? ind + ". " + label : label}</Box>
           </Text>
           {hasLinks && (
             <ChevronIcon

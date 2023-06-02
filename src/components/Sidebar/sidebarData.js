@@ -8,7 +8,7 @@ import {
   Devices,
   Graph,
   Settings,
-  Users
+  Users,
 } from "tabler-icons-react";
 import { routeNames } from "../../Routes/routeNames";
 export const sidebarData = [
@@ -71,13 +71,13 @@ export const sidebarData = [
     links: [{ label: "View Applications", link: routeNames.general.landing }],
   },
   {
-    label: "Contact Us",
+    label: "About Us",
     icon: AddressBook,
-    link: routeNames.general.landing,
+    link: routeNames.general.aboutUs,
   },
   {
     label: "Settings",
     icon: Settings,
-    link: routeNames.general.landing,
+    link: routeNames.general.settings,
   },
 ];

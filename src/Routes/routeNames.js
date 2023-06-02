@@ -11,5 +11,7 @@ export const routeNames = {
     viewJobs: "/view-jobs",
     addTeam: "/add-team",
     viewTeams: "/view-teams",
+    settings: "/settings",
+    aboutUs: "/about-us",
   },
 };
