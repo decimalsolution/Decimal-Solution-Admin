@@ -58,6 +58,14 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
           },
         });
         break;
+      case "teamMember":
+        navigate(routeNames.general.addTeam, {
+          state: {
+            isUpdate: true,
+            data: rowData,
+          },
+        });
+        break;
     }
   };
 
@@ -85,6 +93,8 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
         else if (type === "product")
           queryClient.invalidateQueries("fetchProducts");
         else if (type === "jobs") queryClient.invalidateQueries("fetchJobs");
+        else if (type === "teamMember")
+          queryClient.invalidateQueries("fetchTeamMembers");
       },
       onError: (res) => {
         showNotification({

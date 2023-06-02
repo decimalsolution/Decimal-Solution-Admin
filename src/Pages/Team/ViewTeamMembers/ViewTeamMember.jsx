@@ -1,4 +1,11 @@
-import { Flex, Image, Text, Title, useMantineTheme } from "@mantine/core";
+import {
+  Flex,
+  Image,
+  SimpleGrid,
+  Text,
+  Title,
+  useMantineTheme,
+} from "@mantine/core";
 
 const ViewTeamMember = ({ rowData }) => {
   const theme = useMantineTheme();
@@ -23,15 +30,22 @@ const ViewTeamMember = ({ rowData }) => {
       <Text fw={"bold"} color="purple" fz="xl" my={"md"} align="center">
         {rowData?.teamMemberName}
       </Text>
-      <Title order={3}></Title>
-      <Text>{rowData?.shortDescription}</Text>
-      <Title order={3}>Detail Description</Title>
-      <Text align="justify">{rowData?.description}</Text>
-      <Title order={3}>Detail View Image</Title>
-      <Image
-        src={rowData?.homeImage}
-        width="70%"
-      />
+      <SimpleGrid cols={2}>
+        <Title order={3}>Job Title</Title>
+        <Text>{rowData?.teamMemberTitle}</Text>
+        <Title order={3}>Email</Title>
+        <Text>{rowData?.teamMemberEmail}</Text>
+        <Title order={3}>Phone No.</Title>
+        <Text>{rowData?.teamMemberPhone}</Text>
+        <Title order={3}>Member Priority to Display</Title>
+        <Text>{rowData?.memberPriority}</Text>
+        <Title order={3}>LinkedIn Profile</Title>
+        <Text align="justify">{rowData?.teamMemberLinkedInLink}</Text>
+        <Title order={3}>Facebook Profile</Title>
+        <Text align="justify">{rowData?.teamMemberFacebookLink}</Text>
+        <Title order={3}>Twitter Profile</Title>
+        <Text align="justify">{rowData?.teamMemberTwitterLink}</Text>
+      </SimpleGrid>
     </Flex>
   );
 };

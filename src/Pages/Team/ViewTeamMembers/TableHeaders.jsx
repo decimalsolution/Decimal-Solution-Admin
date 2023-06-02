@@ -28,11 +28,13 @@ export const Columns = [
     name: "Job Title",
     selector: (row) => row.teamMemberTitle,
     sortable: true,
+    width: "200px",
   },
   {
     name: "Email",
     selector: (row) => row.teamMemberEmail,
     sortable: true,
+    width: "150px",
   },
   {
     name: "Contact",
@@ -49,8 +51,8 @@ export const Columns = [
       <StatusToggle
         status={row.blocked}
         id={row._id}
-        type={"service"}
-        queryName="fetchServices"
+        type={"teamMember"}
+        queryName="fetchTeamMembers"
       />
     ),
   },
@@ -64,7 +66,7 @@ export const Columns = [
         del={true}
         edit={true}
         viewData={<ViewTeamMember rowData={row} />}
-        type="Team Member"
+        type="teamMember"
       />
     ),
   },

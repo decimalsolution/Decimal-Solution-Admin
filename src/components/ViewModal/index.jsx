@@ -25,7 +25,7 @@ const ViewModal = ({ opened, setOpened, children, title }) => {
       title={title}
       centered
       radius={"lg"}
-      size={"xl"}
+      size={"lg"}
       styles={{
         overlay: {
           backdropFilter: "blur(3px)",

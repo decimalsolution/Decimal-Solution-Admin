@@ -63,7 +63,7 @@ export const AddTeam = () => {
         val.trim().length < 1
           ? "Please Enter Value Of Length Greater Than 0"
           : null,
-      memberPriority: (val) => val.trim().length < 1,
+      memberPriority: (val) => val.length < 1,
     },
   });
 
@@ -183,7 +183,7 @@ export const AddTeam = () => {
           <Button
             label={"Cancel"}
             variant={"outline"}
-            onClick={() => navigate(routeNames.general.viewService)}
+            onClick={() => navigate(routeNames.general.viewTeams)}
           />
           <Button
             label={state?.isUpdate ? "Edit Team Member" : "Add Team Member"}
