@@ -53,8 +53,8 @@ export const sidebarData = [
     label: "Team",
     icon: Users,
     links: [
-      { label: "Add Service", link: routeNames.general.landing },
-      { label: "View Services", link: routeNames.general.landing },
+      { label: "Add Team Member", link: routeNames.general.addTeam },
+      { label: "View Team Members", link: routeNames.general.viewTeams },
     ],
   },
   {

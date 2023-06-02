@@ -8,6 +8,8 @@ import { AddProject } from "./Pages/Projects/AddProject";
 import ViewProjects from "./Pages/Projects/ViewProjects";
 import { AddProduct } from "./Pages/Products/AddProduct";
 import ViewProducts from "./Pages/Products/ViewProducts";
+import { AddTeam } from "./Pages/Team/AddTeam";
+import ViewTeams from "./Pages/Team/ViewTeamMembers";
 
 function App() {
   return (
@@ -27,6 +29,11 @@ function App() {
         <Route
           path={routeNames.general.viewProducts}
           element={<ViewProducts />}
+        />
+        <Route path={routeNames.general.addTeam} element={<AddTeam />} />
+        <Route
+          path={routeNames.general.viewTeams}
+          element={<ViewTeams/>}
         />
       </Route>
     </Routes>
