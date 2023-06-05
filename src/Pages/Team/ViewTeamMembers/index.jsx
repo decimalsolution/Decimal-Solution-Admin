@@ -25,7 +25,11 @@ const ViewTeams = () => {
   const { status } = useQuery(
     "fetchTeamMembers",
     () => {
-      return axios.get(backendUrl + "/api/v1/teamMember");
+      return axios.get(backendUrl + "/api/v1/teamMember", {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      });
     },
     {
       onSuccess: (res) => {

@@ -78,14 +78,14 @@ export const AddProduct = () => {
           values,
           {
             headers: {
-              authorization: `bearer ${user.token}`,
+              authorization: `Bearer ${user.token}`,
             },
           }
         );
       else
         return axios.post(`${backendUrl + "/api/v1/product"}`, values, {
           headers: {
-            authorization: `bearer ${user.token}`,
+            authorization: `Bearer ${user.token}`,
           },
         });
     },

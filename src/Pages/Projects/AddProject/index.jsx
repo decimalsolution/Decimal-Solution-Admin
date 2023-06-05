@@ -60,7 +60,11 @@ export const AddProject = () => {
   const { status } = useQuery(
     "fetchServices",
     () => {
-      return axios.get(backendUrl + "/api/v1/web/services");
+      return axios.get(backendUrl + "/api/v1/web/services", {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      });
     },
     {
       onSuccess: (res) => {

@@ -80,7 +80,7 @@ export const AddTeam = () => {
           values,
           {
             headers: {
-              authorization: `bearer ${user.token}`,
+              authorization: `Bearer ${user.token}`,
             },
           }
         );
