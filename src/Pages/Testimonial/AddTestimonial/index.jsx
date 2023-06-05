@@ -15,7 +15,7 @@ import { useLocation, useNavigate } from "react-router";
 import { routeNames } from "../../../Routes/routeNames";
 import SelectMenu from "../../../components/SelectMenu";
 
-export const AddBlog = () => {
+export const AddTestimonial = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   let { state } = useLocation();
@@ -24,51 +24,37 @@ export const AddBlog = () => {
   const form = useForm({
     validateInputOnChange: true,
     initialValues: {
-      blogDescription: "",
-      blogImage: null,
-      blogTitle: "",
-      blogData: "",
+      name: "",
+      image: null,
+      designation: "",
+      testimonial: "",
     },
 
     validate: {
-      blogTitle: (value) =>
-        value?.length > 1 && value?.length < 70
+      name: (value) =>
+        value?.length > 1 && value?.length < 30
           ? null
-          : "Please enter blog title between 2 to 70 characters",
-      blogDescription: (value) =>
-        value?.length > 0 ? null : "Please enter blog description",
-      blogData: (value) => (value?.length > 0 ? null : "Please enter blogData"),
-      blogImage: (value) => (value ? null : "Please upload a cover Image"),
+          : "Please enter name",
+      designation: (value) =>
+        value?.length > 0 ? null : "Please enter designation",
+      testimonial: (value) =>
+        value?.length > 0 ? null : "Please enter testimonial",
+      image: (value) => (value ? null : "Please upload a Image"),
     },
   });
 
-  //categories
-  const { status } = useQuery(
-    "fetchServices",
-    () => {
-      return axios.get(backendUrl + "/api/v1/web/services");
-    },
-    {
-      onSuccess: (res) => {
-        let data = res.data.data.map((item) => {
-          return { value: item._id, label: item.title };
-        });
-        setCategories(data);
-      },
-    }
-  );
+  
 
   useEffect(() => {
     if (state?.isUpdate) {
       form.setValues(state.data);
-     
     }
   }, [state]);
   const handleAddService = useMutation(
     (values) => {
       if (state?.isUpdate)
         return axios.patch(
-          `${backendUrl + `/api/v1/blog/${state?.data?._id}`}`,
+          `${backendUrl + `/api/v1/testimonial/${state?.data?._id}`}`,
           values,
           {
             headers: {
@@ -77,7 +63,7 @@ export const AddBlog = () => {
           }
         );
       else
-        return axios.post(`${backendUrl + "/api/v1/blog"}`, values, {
+        return axios.post(`${backendUrl + "/api/v1/testimonial"}`, values, {
           headers: {
             authorization: `Bearer ${user.token}`,
           },
@@ -91,7 +77,7 @@ export const AddBlog = () => {
             message: response?.data?.message,
             color: "green",
           });
-          navigate(routeNames.general.viewBlogs);
+          navigate(routeNames.general.viewTestimonial);
           form.reset();
         } else {
           showNotification({
@@ -105,39 +91,41 @@ export const AddBlog = () => {
   );
   return (
     <Container fluid>
-      <PageHeader label={state?.isUpdate ? "Edit Blog" : "Add Blog"} />
+      <PageHeader
+        label={state?.isUpdate ? "Edit Testimonial" : "Add Testimonial"}
+      />
       <form
         onSubmit={form.onSubmit((values) => handleAddService.mutate(values))}
       >
         <InputField
-          label={"Title"}
-          placeholder={"Enter Blog Title"}
+          label={"Name"}
+          placeholder={"Enter Name"}
           form={form}
           withAsterisk
-          validateName={"blogTitle"}
+          validateName={"name"}
+        />
+        <InputField
+          label={"Designation"}
+          placeholder={"Enter Designation"}
+          rows="4"
+          form={form}
+          withAsterisk
+          validateName={"designation"}
         />
 
         <TextArea
-          label={"Blog Data"}
-          placeholder={"Enter Blog Data"}
+          label={"Testimonial"}
+          placeholder={"Enter testimonial"}
           rows="4"
           form={form}
           withAsterisk
-          validateName={"blogData"}
-        />
-        <TextArea
-          label={"Detail Description"}
-          placeholder={"Enter Detailed Description"}
-          rows="4"
-          form={form}
-          withAsterisk
-          validateName={"blogDescription"}
+          validateName={"testimonial"}
         />
         <Group position="center">
           <DropZone
             form={form}
             folderName={"service"}
-            name={"blogImage"}
+            name={"image"}
             label="Cover Image"
           />
           {/* <DropZone
@@ -151,10 +139,10 @@ export const AddBlog = () => {
           <Button
             label={"Cancel"}
             variant={"outline"}
-            onClick={() => navigate(routeNames.general.viewBlogs)}
+            onClick={() => navigate(routeNames.general.viewTestimonial)}
           />
           <Button
-            label={state?.isUpdate ? "Edit Blog" : "Add Blog"}
+            label={state?.isUpdate ? "Edit Testimonial" : "Add Testimonial"}
             type={"submit"}
             loading={handleAddService.isLoading}
           />

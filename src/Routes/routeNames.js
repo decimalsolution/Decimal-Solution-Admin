@@ -15,6 +15,8 @@ export const routeNames = {
     viewTeams: "/view-teams",
     addBlog:"/add-blog",
     viewBlogs:"/view-blogs",
+    addTestimonial:"/add-testimonial",
+    viewTestimonial:"/view-testimonial",
     settings: "/settings",
     aboutUs: "/about-us",
 

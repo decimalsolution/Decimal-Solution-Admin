@@ -74,6 +74,14 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
           },
         });
         break;
+      case "testimonial":
+        navigate(routeNames.general.addTestimonial, {
+          state: {
+            isUpdate: true,
+            data: rowData,
+          },
+        });
+        break;
     }
   };
 
@@ -103,8 +111,8 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
         else if (type === "jobs") queryClient.invalidateQueries("fetchJobs");
         else if (type === "teamMember")
           queryClient.invalidateQueries("fetchTeamMembers");
-          else if (type === "blog")
-          queryClient.invalidateQueries("fetchBlogs");
+        else if (type === "blog") queryClient.invalidateQueries("fetchBlogs");
+        else if(type === "testimonial") queryClient.invalidateQueries("fetchTestimonials")
       },
       onError: (res) => {
         showNotification({

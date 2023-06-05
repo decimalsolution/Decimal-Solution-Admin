@@ -40,6 +40,8 @@ export const AddJob = () => {
       minimumJobSalary: "",
       maximumJobSalary: "",
       jobImage: null,
+      jobSkills:"",
+      otherBenefits:"",
     },
 
     validate: {
@@ -64,6 +66,7 @@ export const AddJob = () => {
         value ? null : "Please select job deadline",
       jobRequirements: (value) =>
         value?.trim().length > 0 ? null : "Please enter job requirements",
+      
       minimumJobSalary: (value) =>
         value > 0 ? null : "Please enter minimum salary",
       maximumJobSalary: (value) =>
@@ -248,6 +251,22 @@ export const AddJob = () => {
           form={form}
           withAsterisk
           validateName={"description"}
+        />
+        <TextArea
+          label={"Other Benefits"}
+          placeholder={"Enter Other Benefits"}
+          rows="4"
+          form={form}
+          withAsterisk
+          validateName={"otherBenefits"}
+        />
+        <TextArea
+          label={"Job Skills"}
+          placeholder={"Enter Job Skills"}
+          rows="4"
+          form={form}
+          withAsterisk
+          validateName={"jobSkills"}
         />
         <Group position="right" mt={"md"}>
           <Button

@@ -67,6 +67,14 @@ export const sidebarData = [
     ],
   },
   {
+    label: "Testimonial",
+    icon: BrandBlogger,
+    links: [
+      { label: "Add Testimonial", link: routeNames.general.addTestimonial },
+      { label: "View Testimonial", link: routeNames.general.viewTestimonial },
+    ],
+  },
+  {
     label: "About Us",
     icon: AddressBook,
     link: routeNames.general.aboutUs,

@@ -1,4 +1,5 @@
 import {
+  Anchor,
   Flex,
   Image,
   SimpleGrid,
@@ -11,11 +12,11 @@ import moment from "moment";
 const ViewJob = ({ rowData }) => {
   const theme = useMantineTheme();
   return (
-    <SimpleGrid cols={2} w={"100%"}>
-      <Title order={3}>Job Title</Title>
+    <SimpleGrid cols={2} w={"100%"} p={"xl"}>
+      {/* <Title order={3}>Job Title</Title>
       <Text fw={"bold"} color="purple" fz="xl" >
         {rowData?.title}
-      </Text>
+      </Text> */}
       <Title order={3}>Applicant Name</Title>
       <Text align="justify">{rowData?.fullName}</Text>
       <Title order={3}>Applicant Email</Title>
@@ -26,10 +27,12 @@ const ViewJob = ({ rowData }) => {
       <Text align="justify">{moment(rowData?.DOB).format("DD-MMM-YYYY")}</Text>
       <Title order={3}>Address</Title>
       <Text align="justify">{rowData?.address}</Text>
+      <Title order={3}>Resume</Title>
+      {rowData?.resume !== "" ? <Anchor>File</Anchor> : <Text>No file</Text>}
       <Title order={3}>Applicant Comments</Title>
-      <Text align="justify">{rowData?.applicantComments}</Text>
+      <Text align="justify">{rowData?.applicantComments === "" ?"No Comments" :rowData?.applicantComments}</Text>
       
-      <Title order={3}>Application Deadline</Title>
+      {/* <Title order={3}>Application Deadline</Title>
       <Text>
         {moment(rowData?.jobApplicationDeadline).format("DD MMMM YYYY")}
       </Text>
@@ -38,7 +41,7 @@ const ViewJob = ({ rowData }) => {
       <Title order={3}>Job Responsibilities</Title>
       <Text>{rowData?.jobResponsibilities}</Text>
       <Title order={3}>Detail Description</Title>
-      <Text align="justify">{rowData?.description}</Text>
+      <Text align="justify">{rowData?.description}</Text> */}
       {/* <Title order={3}>Detail View Image</Title>
       <Image
         src={rowData?.homeImage}

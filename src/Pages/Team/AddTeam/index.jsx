@@ -31,6 +31,16 @@ export const AddTeam = () => {
       teamMemberTwitterLink: "twitter.com/",
       teamMemberLinkedInLink: "linkedin.com/",
       memberPriority: "",
+      githubLink: "",
+      bankName: "",
+      bankBranch: "",
+      bankAccountNumber: "",
+      IBAN: "",
+      IDCardFront: null,
+      IDCardBack: null,
+      officialEmail:"",
+      officialPhone:""
+
     },
     // we will add team member CNIC as well
     validate: {
