@@ -66,6 +66,7 @@ const GeneralLayout = () => {
         m="lg"
         p="md"
         size={"xl"}
+        mih={"77vh"}
         style={{ borderRadius: "10px" }}
       >
         {allowed() && <Outlet />}
