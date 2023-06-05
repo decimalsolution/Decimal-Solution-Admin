@@ -5,6 +5,7 @@ import PageHeader from "../../components/PageHeader";
 import { backendUrl } from "../../constants/constants";
 import { UserContext } from "../../contexts/UserContext";
 import { useQuery } from "react-query";
+import Card from "./Card"
 
 export const Dashboard = () => {
   const { user } = useContext(UserContext);
