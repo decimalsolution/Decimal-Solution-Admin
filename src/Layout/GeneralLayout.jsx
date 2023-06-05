@@ -7,21 +7,24 @@ import {
   Navbar,
   useMantineTheme,
 } from "@mantine/core";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import { SideBar } from "../components/Sidebar";
 import { routeNames } from "../Routes/routeNames";
 import { Header as MyHeader } from "../components/Header";
+import { UserContext } from "../contexts/UserContext";
 
 const GeneralLayout = () => {
   const theme = useMantineTheme();
+  const { user } = useContext(UserContext);
   const [opened, setOpened] = useState(false);
 
   const allowed = () => {
-    return true;
+    console.log(user);
+    if (user?.token) return true;
+    return false;
   };
-
-  return true ? (
+  return allowed() ? (
     <AppShell
       styles={{
         main: {
@@ -58,12 +61,18 @@ const GeneralLayout = () => {
         </Header>
       }
     >
-      <Container bg="white" m="lg" p="md" size={"xl"} style={{ borderRadius: "10px" }}>
+      <Container
+        bg="white"
+        m="lg"
+        p="md"
+        size={"xl"}
+        style={{ borderRadius: "10px" }}
+      >
         {allowed() && <Outlet />}
       </Container>
     </AppShell>
   ) : (
-    <Navigate to={routeNames.general.landing} />
+    <Navigate to={routeNames.general.login} />
   );
 };
 export default GeneralLayout;

@@ -14,10 +14,12 @@ import { AddTeam } from "./Pages/Team/AddTeam";
 import ViewTeams from "./Pages/Team/ViewTeamMembers";
 import { Settings } from "./Pages/Settings";
 import { AboutUs } from "./Pages/AboutUs";
+import { Login } from "./Pages/Login";
 
 function App() {
   return (
     <Routes>
+      <Route path={routeNames.general.login} element={<Login />} />
       <Route path={routeNames.general.landing} element={<GeneralLayout />}>
         <Route path={routeNames.general.addService} element={<AddService />} />
         <Route
