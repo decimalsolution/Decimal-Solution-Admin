@@ -61,8 +61,8 @@ export const sidebarData = [
     label: "Blogs",
     icon: BrandBlogger,
     links: [
-      { label: "Add Blog", link: routeNames.general.landing },
-      { label: "View Blogs", link: routeNames.general.landing },
+      { label: "Add Blog", link: routeNames.general.addBlog },
+      { label: "View Blogs", link: routeNames.general.viewBlogs },
     ],
   },
   {

@@ -18,7 +18,11 @@ const StatusToggle = ({ status, id, type, queryName }) => {
   const handleStatusChange = useMutation(
     async () => {
       const link = backendUrl + `/api/v1/${type}/${id}`;
-      return axios.patch(link, { blocked: !blocked });
+      return axios.patch(link, { blocked: !blocked },{
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      });
     },
     {
       onSuccess: (res) => {

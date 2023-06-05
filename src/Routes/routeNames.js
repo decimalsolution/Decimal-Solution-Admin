@@ -11,7 +11,10 @@ export const routeNames = {
     viewJobs: "/view-jobs",
     addTeam: "/add-team",
     viewTeams: "/view-teams",
+    addBlog:"/add-blog",
+    viewBlogs:"/view-blogs",
     settings: "/settings",
     aboutUs: "/about-us",
+
   },
 };

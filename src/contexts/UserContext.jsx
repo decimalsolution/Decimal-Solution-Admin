@@ -12,7 +12,7 @@ export const UserProvider = ({ children }) => {
     email: userData?.email,
     phoneNumber: userData?.phoneNumber,
     token:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdXBlckFkbWluVXNlcklkIjoiNjQ3NTlhODA4NmExNmJhOGFhNGI0NDkzIiwiaWF0IjoxNjg1NzEzMDAxLCJleHAiOjE2ODU3OTk0MDF9.Lkn6kAyhW-sVRNqWIv5AuWSlusRP7mu64IEuERLset0",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdXBlckFkbWluVXNlcklkIjoiNjQ3NTlhODA4NmExNmJhOGFhNGI0NDkzIiwiaWF0IjoxNjg1OTQ2MzI0LCJleHAiOjE2ODYwMzI3MjR9.OsDdqQDjXzBUgQ_MvEW59R579vrXqmoZ4l4cjlimoSY",
   });
   const value = { user, setUser };
 

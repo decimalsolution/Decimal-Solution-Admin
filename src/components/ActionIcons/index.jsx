@@ -66,6 +66,14 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
           },
         });
         break;
+      case "blog":
+        navigate(routeNames.general.addBlog, {
+          state: {
+            isUpdate: true,
+            data: rowData,
+          },
+        });
+        break;
     }
   };
 
@@ -75,7 +83,7 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
       const link = backendUrl + `/api/v1/${type}/${rowData._id}`;
       return axios.delete(link, {
         headers: {
-          authorization: `bearer ${user.token}`,
+          authorization: `Bearer ${user.token}`,
         },
       });
     },
@@ -95,6 +103,8 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
         else if (type === "jobs") queryClient.invalidateQueries("fetchJobs");
         else if (type === "teamMember")
           queryClient.invalidateQueries("fetchTeamMembers");
+          else if (type === "blog")
+          queryClient.invalidateQueries("fetchBlogs");
       },
       onError: (res) => {
         showNotification({
