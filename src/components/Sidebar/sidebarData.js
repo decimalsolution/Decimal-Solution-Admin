@@ -47,6 +47,7 @@ export const sidebarData = [
     links: [
       { label: "Add Job", link: routeNames.general.addJob },
       { label: "View Jobs", link: routeNames.general.viewJobs },
+      { label: "Job Applications",link: routeNames.general.jobApplications },
     ],
   },
   {
@@ -61,14 +62,9 @@ export const sidebarData = [
     label: "Blogs",
     icon: BrandBlogger,
     links: [
-      { label: "Add Blog", link: routeNames.general.landing },
-      { label: "View Blogs", link: routeNames.general.landing },
+      { label: "Add Blog", link: routeNames.general.addBlog },
+      { label: "View Blogs", link: routeNames.general.viewBlogs },
     ],
-  },
-  {
-    label: "Job Applications",
-    icon: Book2,
-    links: [{ label: "View Applications", link: routeNames.general.landing }],
   },
   {
     label: "About Us",

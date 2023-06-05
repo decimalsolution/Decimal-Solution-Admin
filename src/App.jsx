@@ -12,6 +12,8 @@ import { AddJob } from "./Pages/Jobs/AddJob";
 import ViewJobs from "./Pages/Jobs/ViewJobs";
 import { AddTeam } from "./Pages/Team/AddTeam";
 import ViewTeams from "./Pages/Team/ViewTeamMembers";
+import { AddBlog } from "./Pages/Blog/AddBlog";
+import ViewBlogs from "./Pages/Blog/ViewBlogs"
 import { Settings } from "./Pages/Settings";
 import { AboutUs } from "./Pages/AboutUs";
 import { Login } from "./Pages/Login";
@@ -42,6 +44,8 @@ function App() {
         <Route path={routeNames.general.viewTeams} element={<ViewTeams />} />
         <Route path={routeNames.general.settings} element={<Settings />} />
         <Route path={routeNames.general.aboutUs} element={<AboutUs />} />
+        <Route path={routeNames.general.addBlog} element={<AddBlog/>}/>
+        <Route path={routeNames.general.viewBlogs} element={<ViewBlogs/>}/>
       </Route>
     </Routes>
   );

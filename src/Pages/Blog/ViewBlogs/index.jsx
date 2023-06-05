@@ -14,18 +14,19 @@ import { backendUrl } from "../../../constants/constants";
 import { routeNames } from "../../../Routes/routeNames";
 import { useNavigate } from "react-router";
 
-const ViewProducts = () => {
+const ViewBlogs = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const [tableData, setTableData] = useState([]);
   const [search, setSearch] = useState("");
   const [blockedFilter, setBlockedFilter] = useState(null);
+  console.log("UserToekn",user.token)
 
   const { status } = useQuery(
-    "fetchProducts",
+    "fetchBlogs",
     () => {
-      return axios.get(backendUrl + "/api/v1/product",{
+      return axios.get(backendUrl + "/api/v1/blog",{
         headers: {
           authorization: `Bearer ${user.token}`,
         },
@@ -43,20 +44,20 @@ const ViewProducts = () => {
   );
   const filteredItems = tableData.filter((item) => {
     if (blockedFilter === null)
-      return item?.title?.toLowerCase().includes(search.toLowerCase());
+      return item?.blogTitle?.toLowerCase().includes(search.toLowerCase());
     else
       return (
-        item?.title?.toLowerCase().includes(search.toLowerCase()) &&
+        item?.blogTitle?.toLowerCase().includes(search.toLowerCase()) &&
         item?.blocked === blockedFilter
       );
   });
   const handleClearFilters = () => {
     setSearch("");
-    setBlockedFilter(false);
+    setBlockedFilter(null);
   };
   return (
     <Container size="xl" p="sm">
-      <PageHeader label={"View Products"} />
+      <PageHeader label={"View Blogs"} />
       <Container size="xl" pb={"md"} bg={"white"} className={classes.table}>
         <Grid p="xs">
           <Grid.Col md="6" lg="3">
@@ -84,9 +85,9 @@ const ViewProducts = () => {
           </Grid.Col>
           <Grid.Col sm="6" md={"6"} lg="4" style={{ textAlign: "end" }}>
             <Button
-              label={"Add Product"}
+              label={"Add Blog"}
               leftIcon="plus"
-              onClick={() => navigate(routeNames.general.addProduct)}
+              onClick={() => navigate(routeNames.general.addBlog)}
             />
           </Grid.Col>
         </Grid>
@@ -101,4 +102,4 @@ const ViewProducts = () => {
   );
 };
 
-export default ViewProducts;
+export default ViewBlogs;
