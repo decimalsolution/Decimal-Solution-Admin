@@ -30,6 +30,11 @@ const ViewJobs = () => {
           authorization: `Bearer ${user.token}`,
         },
       });
+      return axios.get(backendUrl + "/api/v1/jobs", {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      });
     },
     {
       onSuccess: (res) => {

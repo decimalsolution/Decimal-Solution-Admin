@@ -25,7 +25,11 @@ const ViewProjects = () => {
   const { status } = useQuery(
     "fetchProjects",
     () => {
-      return axios.get(backendUrl + "/api/v1/project");
+      return axios.get(backendUrl + "/api/v1/project", {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      });
     },
     {
       onSuccess: (res) => {

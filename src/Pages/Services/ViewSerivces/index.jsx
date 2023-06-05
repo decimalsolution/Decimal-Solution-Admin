@@ -25,7 +25,11 @@ const ViewServices = () => {
   const { status } = useQuery(
     "fetchServices",
     () => {
-      return axios.get(backendUrl + "/api/v1/service");
+      return axios.get(backendUrl + "/api/v1/service", {
+        headers: {
+          authorization: `Bearer ${user.token}`,
+        },
+      });
     },
     {
       onSuccess: (res) => {
