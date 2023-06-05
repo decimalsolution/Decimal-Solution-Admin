@@ -25,11 +25,6 @@ const ViewJobs = () => {
   const { status } = useQuery(
     "fetchJobs",
     () => {
-      return axios.get(backendUrl + "/api/v1/jobs",{
-        headers: {
-          authorization: `Bearer ${user.token}`,
-        },
-      });
       return axios.get(backendUrl + "/api/v1/jobs", {
         headers: {
           authorization: `Bearer ${user.token}`,
