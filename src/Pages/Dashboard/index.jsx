@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import axios from "axios";
-import { SimpleGrid } from "@mantine/core";
+import { Loader, SimpleGrid } from "@mantine/core";
 import PageHeader from "../../components/PageHeader";
 import { Card } from "./card";
 import { backendUrl } from "../../constants/constants";
@@ -9,16 +9,7 @@ import { useQuery } from "react-query";
 
 export const Dashboard = () => {
   const { user } = useContext(UserContext);
-  const [data, setData] = useState([
-    { label: "Service", value: 50 },
-    { label: "Service", value: 50 },
-    { label: "Service", value: 50 },
-    { label: "Service", value: 50 },
-    { label: "Service", value: 50 },
-    { label: "Service", value: 50 },
-    { label: "Service", value: 50 },
-    { label: "Service", value: 50 },
-  ]);
+  const [data, setData] = useState([]);
 
   const { status } = useQuery(
     "fetchDashboard",
@@ -39,18 +30,22 @@ export const Dashboard = () => {
   return (
     <>
       <PageHeader label={"Dashboard"} />
-      <SimpleGrid
-        verticalSpacing={"xl"}
-        breakpoints={[
-          { minWidth: "sm", cols: 2 },
-          { minWidth: "md", cols: 3 },
-          { minWidth: "lg", cols: 4 },
-        ]}
-      >
-        {data.map((obj, ind) => (
-          <Card key={ind} data={obj} />
-        ))}
-      </SimpleGrid>
+      {status === "loading" ? (
+        <Loader style={{ width:'100%', margin: "auto" }} />
+      ) : (
+        <SimpleGrid
+          verticalSpacing={"xl"}
+          breakpoints={[
+            { minWidth: "sm", cols: 2 },
+            { minWidth: "md", cols: 3 },
+            { minWidth: "lg", cols: 4 },
+          ]}
+        >
+          {data.map((obj, ind) => (
+            <Card key={ind} data={obj} />
+          ))}
+        </SimpleGrid>
+      )}
     </>
   );
 };
