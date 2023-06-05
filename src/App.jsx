@@ -17,6 +17,7 @@ import ViewBlogs from "./Pages/Blog/ViewBlogs"
 import { Settings } from "./Pages/Settings";
 import { AboutUs } from "./Pages/AboutUs";
 import { Login } from "./Pages/Login";
+import ViewJobApplications from "./Pages/Jobs/JobApplications";
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route path={routeNames.general.aboutUs} element={<AboutUs />} />
         <Route path={routeNames.general.addBlog} element={<AddBlog/>}/>
         <Route path={routeNames.general.viewBlogs} element={<ViewBlogs/>}/>
+        <Route path={routeNames.general.jobApplications} element={<ViewJobApplications/>}/>
       </Route>
     </Routes>
   );

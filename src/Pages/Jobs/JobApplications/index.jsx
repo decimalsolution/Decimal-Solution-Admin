@@ -14,7 +14,7 @@ import { backendUrl } from "../../../constants/constants";
 import { routeNames } from "../../../Routes/routeNames";
 import { useNavigate } from "react-router";
 
-const ViewJobs = () => {
+const ViewJobApplications = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
@@ -23,9 +23,9 @@ const ViewJobs = () => {
   const [blockedFilter, setBlockedFilter] = useState(null);
 
   const { status } = useQuery(
-    "fetchJobs",
+    "fetchJobApplications",
     () => {
-      return axios.get(backendUrl + "/api/v1/jobs",{
+      return axios.get(backendUrl + "/api/v1/jobapplications", {
         headers: {
           authorization: `Bearer ${user.token}`,
         },
@@ -56,7 +56,7 @@ const ViewJobs = () => {
   };
   return (
     <Container size="xl" p="sm">
-      <PageHeader label={"View Jobs"} />
+      <PageHeader label={"View Job Applications"} />
       <Container size="xl" pb={"md"} bg={"white"} className={classes.table}>
         <Grid p="xs">
           <Grid.Col md="6" lg="3">
@@ -92,7 +92,7 @@ const ViewJobs = () => {
         </Grid>
         <DataGrid
           columns={Columns}
-          data={filteredItems}
+          data={tableData}
           progressPending={status === "loading"}
           type="jobs"
         />
@@ -101,4 +101,4 @@ const ViewJobs = () => {
   );
 };
 
-export default ViewJobs;
+export default ViewJobApplications;
