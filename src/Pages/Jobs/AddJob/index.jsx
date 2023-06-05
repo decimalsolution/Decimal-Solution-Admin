@@ -40,8 +40,8 @@ export const AddJob = () => {
       minimumJobSalary: "",
       maximumJobSalary: "",
       jobImage: null,
-      jobSkills:"",
-      otherBenefits:"",
+      jobSkills: "",
+      otherBenefits: "",
     },
 
     validate: {
@@ -66,7 +66,7 @@ export const AddJob = () => {
         value ? null : "Please select job deadline",
       jobRequirements: (value) =>
         value?.trim().length > 0 ? null : "Please enter job requirements",
-      
+
       minimumJobSalary: (value) =>
         value > 0 ? null : "Please enter minimum salary",
       maximumJobSalary: (value) =>
