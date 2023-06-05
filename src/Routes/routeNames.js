@@ -9,6 +9,7 @@ export const routeNames = {
     viewProducts: "/view-products",
     addJob: "/add-job",
     viewJobs: "/view-jobs",
+    jobApplications: "/job-applications",
     addTeam: "/add-team",
     viewTeams: "/view-teams",
     addBlog:"/add-blog",
