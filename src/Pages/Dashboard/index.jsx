@@ -2,10 +2,10 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Loader, SimpleGrid } from "@mantine/core";
 import PageHeader from "../../components/PageHeader";
-import { Card } from "./card";
 import { backendUrl } from "../../constants/constants";
 import { UserContext } from "../../contexts/UserContext";
 import { useQuery } from "react-query";
+import Card from "./Card"
 
 export const Dashboard = () => {
   const { user } = useContext(UserContext);

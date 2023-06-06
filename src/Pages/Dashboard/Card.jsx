@@ -1,8 +1,7 @@
 import { Container, Text } from "@mantine/core";
-import React from "react";
 import { useStyles } from "./styles";
 
-export const Card = ({data}) => {
+const Card = ({data}) => {
   const { classes } = useStyles();
   return (
     <Container className={classes.card}>
@@ -15,3 +14,4 @@ export const Card = ({data}) => {
     </Container>
   );
 };
+export default Card;
