@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Container, Group } from "@mantine/core";
+import { Container, Divider, Flex, Group, SimpleGrid } from "@mantine/core";
 import { useMutation } from "react-query";
 import { useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
@@ -38,9 +38,9 @@ export const AddTeam = () => {
       IBAN: "",
       IDCardFront: null,
       IDCardBack: null,
-      officialEmail:"",
-      officialPhone:""
-
+      officialEmail: "",
+      officialPhone: "",
+      CNIC:""
     },
     // we will add team member CNIC as well
     validate: {
@@ -77,6 +77,8 @@ export const AddTeam = () => {
     },
   });
 
+  console.log("form",form.values)
+
   useEffect(() => {
     if (state?.isUpdate) {
       form.setValues(state.data);
@@ -97,7 +99,7 @@ export const AddTeam = () => {
       else
         return axios.post(`${backendUrl + "/api/v1/teamMember"}`, values, {
           headers: {
-            authorization: `bearer ${user.token}`,
+            authorization: `Bearer ${user.token}`,
           },
         });
     },
@@ -127,66 +129,236 @@ export const AddTeam = () => {
         label={state?.isUpdate ? "Edit Team Member" : "Add Team Member"}
       />
       <form onSubmit={form.onSubmit((values) => handleAddTeam.mutate(values))}>
-        <InputField
-          label={"Team Member Name"}
-          placeholder={"Enter Team Member Name"}
-          form={form}
-          withAsterisk
-          validateName={"teamMemberName"}
+        {/* <SimpleGrid
+          cols={2}
+          breakpoints={[{ maxWidth: "36rem", cols: 1, spacing: "sm" }]}
+        >
+           <DropZone
+            form={form}
+            folderName={"teamMember"}
+            name={"teamMemberImage"}
+            label="Team Member Image"
+          />
+          <InputField
+            label={"Team Member Name"}
+            placeholder={"Enter Team Member Name"}
+            form={form}
+            withAsterisk
+            validateName={"teamMemberName"}
+          />
+          <InputField
+            label={"Job Title"}
+            placeholder={"Enter Job Title"}
+            form={form}
+            withAsterisk
+            validateName={"teamMemberTitle"}
+          />
+          <InputField
+            label={"Email Address"}
+            placeholder={"Enter Email Address of Team Member"}
+            form={form}
+            withAsterisk
+            validateName={"teamMemberEmail"}
+          />
+          <InputField
+            label={"Contact Number"}
+            placeholder={"Enter Contact Number of Team Member"}
+            form={form}
+            withAsterisk
+            validateName={"teamMemberPhone"}
+          />
+          <InputField
+            label={"Priority"}
+            placeholder={"Enter Priority"}
+            form={form}
+            withAsterisk
+            validateName={"memberPriority"}
+          />
+        
+        </SimpleGrid> */}
+        <Divider
+        my="xl"
+        label="Personal Information"
+        labelPosition="center"
+        fz={"lg"}
         />
-        <InputField
-          label={"Job Title"}
-          placeholder={"Enter Job Title"}
-          form={form}
-          withAsterisk
-          validateName={"teamMemberTitle"}
-        />
-        <InputField
-          label={"Email Address"}
-          placeholder={"Enter Email Address of Team Member"}
-          form={form}
-          withAsterisk
-          validateName={"teamMemberEmail"}
-        />
-        <InputField
-          label={"Contact Number"}
-          placeholder={"Enter Contact Number of Team Member"}
-          form={form}
-          withAsterisk
-          validateName={"teamMemberPhone"}
-        />
-        <InputField
-          label={"Priority"}
-          placeholder={"Enter Priority"}
-          form={form}
-          withAsterisk
-          validateName={"memberPriority"}
-        />
-        <InputField
-          label={"Facebook Link"}
-          placeholder={"www.facebook.com/team-member-profile"}
-          form={form}
-          validateName={"teamMemberFacebookLink"}
-        />
-        <InputField
-          label={"Twitter Link"}
-          placeholder={"www.twitter.com/team-member-profile"}
-          form={form}
-          validateName={"teamMemberTwitterLink"}
-        />
-        <InputField
-          label={"LinkedIn Link"}
-          placeholder={"www.linkedin.com/team-member-profile"}
-          form={form}
-          validateName={"teamMemberLinkedInLink"}
-        />
+        <Flex gap={"xl"} justify={"space-around"}>
+        
+          <SimpleGrid
+          cols={2}
+          breakpoints={[{ maxWidth: "36rem", cols: 1, spacing: "sm" }]}
+        >
+          
+          <InputField
+            label={"Team Member Name"}
+            placeholder={"Enter Team Member Name"}
+            form={form}
+            withAsterisk
+            validateName={"teamMemberName"}
+          />
+          <InputField
+            label={"Job Title"}
+            placeholder={"Enter Job Title"}
+            form={form}
+            withAsterisk
+            validateName={"teamMemberTitle"}
+          />
+          <InputField
+            label={"Email Address"}
+            placeholder={"Enter Email Address of Team Member"}
+            form={form}
+            withAsterisk
+            validateName={"teamMemberEmail"}
+          />
+          <InputField
+            label={"Contact Number"}
+            placeholder={"Enter Contact Number of Team Member"}
+            form={form}
+            withAsterisk
+            validateName={"teamMemberPhone"}
+          />
+          <InputField
+            label={"CNIC"}
+            placeholder={"CNIC"}
+            form={form}
+            withAsterisk
+            validateName={"CNIC"}
+          />
+          <InputField
+            label={"Priority"}
+            placeholder={"Enter Priority"}
+            form={form}
+            withAsterisk
+            validateName={"memberPriority"}
+          />
+        
+        </SimpleGrid>
+        <DropZone
+            form={form}
+            folderName={"teamMember"}
+            name={"teamMemberImage"}
+            label="Team Member Image"
+          />
 
-        <Group position="center">
+        </Flex>
+        <Divider
+          my="xl"
+          label="Contact Information"
+          labelPosition="center"
+          fz={"lg"}
+        />
+        <SimpleGrid cols={2}>
+          <InputField
+            label={"Official Email"}
+            placeholder={"Official Email"}
+            form={form}
+            validateName={"officialEmail"}
+          />
+          <InputField
+            label={"Official Phone"}
+            placeholder={"Official Phone"}
+            form={form}
+            validateName={"officialPhone"}
+          />
+        </SimpleGrid>
+        <Divider
+          my="xl"
+          label="Social Links"
+          labelPosition="center"
+          fz={"lg"}
+        />
+        <SimpleGrid cols={2}>
+        <InputField
+            label={"Facebook Link"}
+            placeholder={"www.facebook.com/team-member-profile"}
+            form={form}
+            validateName={"teamMemberFacebookLink"}
+          />
+          <InputField
+            label={"Twitter Link"}
+            placeholder={"www.twitter.com/team-member-profile"}
+            form={form}
+            validateName={"teamMemberTwitterLink"}
+          />
+          <InputField
+            label={"LinkedIn Link"}
+            placeholder={"www.linkedin.com/team-member-profile"}
+            form={form}
+            validateName={"teamMemberLinkedInLink"}
+          />
+          <InputField
+            label={"Github Link"}
+            placeholder={"www.github.com/team-member-profile"}
+            form={form}
+            validateName={"githubLink"}
+          />
+        </SimpleGrid>
+        <Divider
+          my="xl"
+          label="Account Information"
+          labelPosition="center"
+          fz={"lg"}
+        />
+        <SimpleGrid cols={2}>
+          <InputField
+            label={"Bank Name"}
+            placeholder={"Bank Name"}
+            form={form}
+            validateName={"bankName"}
+          />
+          <InputField
+            label={"Bank Branch"}
+            placeholder={"Bank Branch"}
+            form={form}
+            validateName={"bankBranch"}
+          />
+          <InputField
+            label={"Bank Account Number"}
+            placeholder={"Bank Account Number"}
+            form={form}
+            validateName={"bankAccountNumber"}
+          />
+          <InputField
+            label={"IBAN"}
+            placeholder={"IBAN"}
+            form={form}
+            validateName={"IBAN"}
+          />
+        </SimpleGrid>
+
+        <Divider
+          my="xl"
+          label="ID Card Information"
+          labelPosition="center"
+          fz={"lg"}
+        />
+        {/* <SimpleGrid cols={2}>
+        <DropZone
+            form={form}
+            folderName={"teamMember"}
+            name={"teamMemberImage"}
+            label="Team Member Image"
+          />
           <DropZone
             form={form}
             folderName={"teamMember"}
             name={"teamMemberImage"}
             label="Team Member Image"
+          />
+        </SimpleGrid> */}
+        
+        <Group position="center">
+          <DropZone
+            form={form}
+            folderName={"teamMember"}
+            name={"IDCardFront"}
+            label="ID Card Front Image"
+          />
+          <DropZone
+            form={form}
+            folderName={"teamMember"}
+            name={"IDCardBack"}
+            label="ID Card Back Image"
           />
         </Group>
         <Group position="right" mt={"md"}>
