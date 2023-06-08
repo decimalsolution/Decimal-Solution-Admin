@@ -84,14 +84,14 @@ export const AddProject = () => {
           values,
           {
             headers: {
-              authorization: `bearer ${user.token}`,
+              authorization: `Bearer ${user.token}`,
             },
           }
         );
       else
         return axios.post(`${backendUrl + "/api/v1/project"}`, values, {
           headers: {
-            authorization: `bearer ${user.token}`,
+            authorization: `Bearer ${user.token}`,
           },
         });
     },
