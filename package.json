@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host" ,
+    "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
@@ -28,6 +28,7 @@
     "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
+    "react-input-mask": "^2.0.4",
     "react-query": "^3.39.3",
     "react-router-dom": "^6.11.2",
     "tabler-icons-react": "^1.56.0"

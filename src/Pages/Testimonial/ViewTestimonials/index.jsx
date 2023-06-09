@@ -21,12 +21,11 @@ const ViewTestimonial = () => {
   const [tableData, setTableData] = useState([]);
   const [search, setSearch] = useState("");
   const [blockedFilter, setBlockedFilter] = useState(null);
-  console.log("UserToekn",user.token)
 
   const { status } = useQuery(
     "fetchTestimonials",
     () => {
-      return axios.get(backendUrl + "/api/v1/testimonial",{
+      return axios.get(backendUrl + "/api/v1/testimonial", {
         headers: {
           authorization: `Bearer ${user.token}`,
         },
@@ -68,14 +67,14 @@ const ViewTestimonial = () => {
               onChange={(v) => setSearch(v.target.value)}
             />
           </Grid.Col>
-          {/* <Grid.Col sm="6" md="6" lg="3">
+          <Grid.Col sm="6" md="6" lg="3">
             <SelectMenu
               placeholder={"Filter by Status"}
               data={filterbyStatus}
               value={blockedFilter}
               onChange={setBlockedFilter}
             />
-          </Grid.Col> */}
+          </Grid.Col>
           <Grid.Col sm="6" md="3" lg={"2"} style={{ textAlign: "end" }}>
             <Button
               label={"Clear Filters"}
@@ -87,7 +86,7 @@ const ViewTestimonial = () => {
             <Button
               label={"Add Testimonial"}
               leftIcon="plus"
-              onClick={() => navigate(routeNames.general.addBlog)}
+              onClick={() => navigate(routeNames.general.addTestimonial)}
             />
           </Grid.Col>
         </Grid>

@@ -4,7 +4,7 @@ import { useMutation } from "react-query";
 import { useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
 import InputField from "../../../components/InputField";
-import TextArea from "../../../components/TextArea";
+import InputMask from "react-input-mask";
 import Button from "../../../components/Button";
 import PageHeader from "../../../components/PageHeader";
 import { backendUrl } from "../../../constants/constants";
@@ -40,7 +40,7 @@ export const AddTeam = () => {
       IDCardBack: null,
       officialEmail: "",
       officialPhone: "",
-      CNIC:""
+      CNIC: "",
     },
     // we will add team member CNIC as well
     validate: {
@@ -74,10 +74,14 @@ export const AddTeam = () => {
           ? "Please Enter Value Of Length Greater Than 0"
           : null,
       memberPriority: (val) => val.length < 1,
+      CNIC: (val) =>
+        val.length < 1 || val?.length > 15 ? "Please Enter CNIC" : null,
+      IDCardFront: (value) => (value ? null : "Please Upload Cnic front image"),
+      IDCardBack: (value) => (value ? null : "Please Upload Cnic back image"),
+      teamMemberImage: (value) =>
+        value ? null : "Please Upload User photo",
     },
   });
-
-  console.log("form",form.values)
 
   useEffect(() => {
     if (state?.isUpdate) {
@@ -177,69 +181,70 @@ export const AddTeam = () => {
         
         </SimpleGrid> */}
         <Divider
-        my="xl"
-        label="Personal Information"
-        labelPosition="center"
-        fz={"lg"}
+          my="xl"
+          label="Personal Information"
+          labelPosition="center"
+          fz={"lg"}
         />
         <Flex gap={"xl"} justify={"space-around"}>
-        
           <SimpleGrid
-          cols={2}
-          breakpoints={[{ maxWidth: "36rem", cols: 1, spacing: "sm" }]}
-        >
-          
-          <InputField
-            label={"Team Member Name"}
-            placeholder={"Enter Team Member Name"}
-            form={form}
-            withAsterisk
-            validateName={"teamMemberName"}
-          />
-          <InputField
-            label={"Job Title"}
-            placeholder={"Enter Job Title"}
-            form={form}
-            withAsterisk
-            validateName={"teamMemberTitle"}
-          />
-          <InputField
-            label={"Email Address"}
-            placeholder={"Enter Email Address of Team Member"}
-            form={form}
-            withAsterisk
-            validateName={"teamMemberEmail"}
-          />
-          <InputField
-            label={"Contact Number"}
-            placeholder={"Enter Contact Number of Team Member"}
-            form={form}
-            withAsterisk
-            validateName={"teamMemberPhone"}
-          />
-          <InputField
-            label={"CNIC"}
-            placeholder={"CNIC"}
-            form={form}
-            withAsterisk
-            validateName={"CNIC"}
-          />
-          <InputField
-            label={"Priority"}
-            placeholder={"Enter Priority"}
-            form={form}
-            withAsterisk
-            validateName={"memberPriority"}
-          />
-        
-        </SimpleGrid>
-        <DropZone
+            cols={2}
+            breakpoints={[{ maxWidth: "36rem", cols: 1, spacing: "sm" }]}
+          >
+            <InputField
+              label={"Team Member Name"}
+              placeholder={"Enter Name"}
+              form={form}
+              withAsterisk
+              validateName={"teamMemberName"}
+            />
+            <InputField
+              label={"Job Title"}
+              placeholder={"Enter Job Title"}
+              form={form}
+              withAsterisk
+              validateName={"teamMemberTitle"}
+            />
+            <InputField
+              label={"Email Address"}
+              placeholder={"Enter Email Address"}
+              form={form}
+              withAsterisk
+              validateName={"teamMemberEmail"}
+            />
+            <InputField
+              label={"Contact Number"}
+              placeholder={"Enter Contact Number"}
+              form={form}
+              component={InputMask}
+              mask={"0399-9999999"}
+              withAsterisk
+              validateName={"teamMemberPhone"}
+            />
+            <InputField
+              label={"CNIC"}
+              placeholder={"CNIC (13 digits)"}
+              form={form}
+              component={InputMask}
+              mask={"99999-9999999-9"}
+              withAsterisk
+              validateName={"CNIC"}
+            />
+            <InputField
+              label={"Priority"}
+              placeholder={"Enter Priority"}
+              form={form}
+              type="number"
+              withAsterisk
+              validateName={"memberPriority"}
+            />
+          </SimpleGrid>
+          <DropZone
             form={form}
             folderName={"teamMember"}
             name={"teamMemberImage"}
             label="Team Member Image"
           />
-
         </Flex>
         <Divider
           my="xl"
@@ -268,7 +273,7 @@ export const AddTeam = () => {
           fz={"lg"}
         />
         <SimpleGrid cols={2}>
-        <InputField
+          <InputField
             label={"Facebook Link"}
             placeholder={"www.facebook.com/team-member-profile"}
             form={form}
@@ -346,7 +351,7 @@ export const AddTeam = () => {
             label="Team Member Image"
           />
         </SimpleGrid> */}
-        
+
         <Group position="center">
           <DropZone
             form={form}

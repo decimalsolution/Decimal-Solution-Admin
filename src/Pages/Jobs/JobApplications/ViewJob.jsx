@@ -22,16 +22,28 @@ const ViewJob = ({ rowData }) => {
       <Title order={3}>Applicant Email</Title>
       <Text align="justify">{rowData?.email}</Text>
       <Title order={3}>Applied Date</Title>
-      <Text align="justify">{moment(rowData?.createdDate).format("DD-MMM-YYYY")}</Text>
+      <Text align="justify">
+        {moment(rowData?.createdDate).format("DD-MMM-YYYY")}
+      </Text>
       <Title order={3}>Date Of Birth</Title>
       <Text align="justify">{moment(rowData?.DOB).format("DD-MMM-YYYY")}</Text>
       <Title order={3}>Address</Title>
       <Text align="justify">{rowData?.address}</Text>
       <Title order={3}>Resume</Title>
-      {rowData?.resume !== "" ? <Anchor>File</Anchor> : <Text>No file</Text>}
+      {rowData?.resume !== "" ? (
+        <Anchor href={rowData?.resume} target="_blank">
+          File
+        </Anchor>
+      ) : (
+        <Text>No file</Text>
+      )}
       <Title order={3}>Applicant Comments</Title>
-      <Text align="justify">{rowData?.applicantComments === "" ?"No Comments" :rowData?.applicantComments}</Text>
-      
+      <Text align="justify">
+        {rowData?.applicantComments === ""
+          ? "No Comments"
+          : rowData?.applicantComments}
+      </Text>
+
       {/* <Title order={3}>Application Deadline</Title>
       <Text>
         {moment(rowData?.jobApplicationDeadline).format("DD MMMM YYYY")}

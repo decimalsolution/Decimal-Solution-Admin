@@ -1,25 +1,23 @@
-import axios from "axios";
 import { Container, Group } from "@mantine/core";
-import { useMutation, useQuery } from "react-query";
 import { useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
-import InputField from "../../../components/InputField";
-import TextArea from "../../../components/TextArea";
-import Button from "../../../components/Button";
-import PageHeader from "../../../components/PageHeader";
-import { backendUrl } from "../../../constants/constants";
-import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../../contexts/UserContext";
-import DropZone from "../../../components/Dropzone";
+import axios from "axios";
+import { useContext, useEffect } from "react";
+import { useMutation } from "react-query";
 import { useLocation, useNavigate } from "react-router";
 import { routeNames } from "../../../Routes/routeNames";
-import SelectMenu from "../../../components/SelectMenu";
+import Button from "../../../components/Button";
+import DropZone from "../../../components/Dropzone";
+import InputField from "../../../components/InputField";
+import PageHeader from "../../../components/PageHeader";
+import TextArea from "../../../components/TextArea";
+import { backendUrl } from "../../../constants/constants";
+import { UserContext } from "../../../contexts/UserContext";
 
 export const AddTestimonial = () => {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   let { state } = useLocation();
-  const [categories, setCategories] = useState([]);
 
   const form = useForm({
     validateInputOnChange: true,

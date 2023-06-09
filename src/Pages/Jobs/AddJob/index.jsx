@@ -109,14 +109,14 @@ export const AddJob = () => {
           values,
           {
             headers: {
-              authorization: `bearer ${user.token}`,
+              authorization: `Bearer ${user.token}`,
             },
           }
         );
       else
         return axios.post(`${backendUrl + "/api/v1/jobs"}`, values, {
           headers: {
-            authorization: `bearer ${user.token}`,
+            authorization: `Bearer ${user.token}`,
           },
         });
     },
@@ -140,7 +140,6 @@ export const AddJob = () => {
       },
     }
   );
-  console.log(form.errors);
 
   return (
     <Container fluid>
@@ -212,6 +211,7 @@ export const AddJob = () => {
             placeholder={"Select Application Deadline"}
             form={form}
             withAsterisk
+            minDate={new Date()}
             validateName={"jobApplicationDeadline"}
           />
           <InputField
@@ -257,7 +257,6 @@ export const AddJob = () => {
           placeholder={"Enter Other Benefits"}
           rows="4"
           form={form}
-          withAsterisk
           validateName={"otherBenefits"}
         />
         <TextArea
@@ -265,7 +264,6 @@ export const AddJob = () => {
           placeholder={"Enter Job Skills"}
           rows="4"
           form={form}
-          withAsterisk
           validateName={"jobSkills"}
         />
         <Group position="right" mt={"md"}>

@@ -25,8 +25,8 @@ export const Columns = [
     width: "250px",
   },
   {
-    name: "Project Link",
-    selector: (row) => row.link,
+    name: "Short Description",
+    selector: (row) => row.shortDescription,
     sortable: true,
     // center: true,
     // width: "250px",

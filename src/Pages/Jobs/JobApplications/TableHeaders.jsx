@@ -46,25 +46,25 @@ export const Columns = [
     // center: true,
     width: "120px",
     cell: (row) => {
-      return row?.resume !== "" ? <Anchor>File</Anchor> : <Text>No file</Text>;
+      return row?.resume !== "" ? <Anchor href={row?.resume} target="_blank">File</Anchor> : <Text>No file</Text>;
     },
   },
 
-  {
-    name: "Status",
-    selector: (row) => row.blocked,
-    width: "150px",
-    sortable: true,
-    center: true,
-    cell: (row) => (
-      <StatusToggle
-        status={row.blocked}
-        id={row._id}
-        type={"jobs"}
-        queryName="fetchJobs"
-      />
-    ),
-  },
+  // {
+  //   name: "Status",
+  //   selector: (row) => row.blocked,
+  //   width: "150px",
+  //   sortable: true,
+  //   center: true,
+  //   cell: (row) => (
+  //     <StatusToggle
+  //       status={row.blocked}
+  //       id={row._id}
+  //       type={"jobs"}
+  //       queryName="fetchJobs"
+  //     />
+  //   ),
+  // },
   {
     name: "Actions",
     center: true,

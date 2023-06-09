@@ -43,10 +43,10 @@ const ViewJobApplications = () => {
   );
   const filteredItems = tableData.filter((item) => {
     if (blockedFilter === null)
-      return item?.title?.toLowerCase().includes(search.toLowerCase());
+      return item?.fullName?.toLowerCase().includes(search.toLowerCase());
     else
       return (
-        item?.title?.toLowerCase().includes(search.toLowerCase()) &&
+        item?.fullName?.toLowerCase().includes(search.toLowerCase()) &&
         item?.blocked === blockedFilter
       );
   });
@@ -92,7 +92,7 @@ const ViewJobApplications = () => {
         </Grid>
         <DataGrid
           columns={Columns}
-          data={tableData}
+          data={filteredItems}
           progressPending={status === "loading"}
           type="jobs"
         />
