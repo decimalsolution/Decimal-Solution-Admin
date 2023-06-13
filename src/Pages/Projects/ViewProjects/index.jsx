@@ -54,7 +54,7 @@ const ViewProjects = () => {
 
   const handleClearFilters = () => {
     setSearch("");
-    setBlockedFilter(false);
+    setBlockedFilter(null);
   };
   console.log(filteredItems);
   return (

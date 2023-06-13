@@ -52,7 +52,7 @@ const ViewTeams = () => {
   });
   const handleClearFilters = () => {
     setSearch("");
-    setBlockedFilter(false);
+    setBlockedFilter(null);
   };
   return (
     <Container size="xl" p="sm">

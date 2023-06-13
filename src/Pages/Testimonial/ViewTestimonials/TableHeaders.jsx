@@ -1,4 +1,4 @@
-import moment from "moment";
+import moment from "moment/moment";
 import ActionIcons from "../../../components/ActionIcons";
 import StatusToggle from "../../../components/StatusToggle";
 import TableImageView from "../../../components/TableImageView";
@@ -34,10 +34,11 @@ export const Columns = [
   },
   {
     name: "Created Date",
-    selector: (row) => moment(row.createdDate).format("DD-MMM-YYYYY"),
+    selector: (row) => row.createdAt,
     sortable: true,
     // center: true,
     width: "170px",
+    cell: (row) => moment(row.createdAt).format("DD MMMM YYYY"),
   },
   {
     name: "Status",

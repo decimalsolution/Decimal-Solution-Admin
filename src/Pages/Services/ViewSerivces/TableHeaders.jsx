@@ -29,7 +29,7 @@ export const Columns = [
     selector: (row) => row.shortDescription,
     sortable: true,
     // center: true,
-    // width: "250px",
+    width: "300px",
   },
   {
     name: "Status",
@@ -49,6 +49,7 @@ export const Columns = [
   {
     name: "Actions",
     center: true,
+    width: "200px",
     cell: (row) => (
       <ActionIcons
         rowData={row}
