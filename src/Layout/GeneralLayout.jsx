@@ -9,19 +9,23 @@ import {
 } from "@mantine/core";
 import { useContext, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 import { SideBar } from "../components/Sidebar";
 import { routeNames } from "../Routes/routeNames";
 import { Header as MyHeader } from "../components/Header";
 import { UserContext } from "../contexts/UserContext";
 
+// const now = Date.now();
 const GeneralLayout = () => {
   const theme = useMantineTheme();
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [opened, setOpened] = useState(false);
+  let decoded = jwt_decode(user?.token);
 
   const allowed = () => {
-    console.log(user);
-    if (user?.token) return true;
+    if (user?.token && decoded?.exp * 1000 > Date.now()) return true;
+    localStorage.clear();
+    setUser({ token: null });
     return false;
   };
   return allowed() ? (
@@ -31,11 +35,11 @@ const GeneralLayout = () => {
           background: "rgb(0,0,0,0.05)",
         },
       }}
-      navbarOffsetBreakpoint="sm"
+      navbarOffsetBreakpoint="md"
       navbar={
         <Navbar
           p="md"
-          hiddenBreakpoint="sm"
+          hiddenBreakpoint="md"
           hidden={!opened}
           width={{ sm: 200, lg: 300 }}
         >
@@ -63,7 +67,7 @@ const GeneralLayout = () => {
     >
       <Container
         bg="white"
-        m="lg"
+        m="auto"
         p="md"
         size={"xl"}
         mih={"77vh"}

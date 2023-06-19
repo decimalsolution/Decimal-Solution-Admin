@@ -20,7 +20,7 @@ export const Login = () => {
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-    if (user.token) {
+    if (user?.token) {
       navigate(routeNames.general.landing);
     }
   }, [navigate, user]);
