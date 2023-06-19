@@ -51,7 +51,7 @@ export function SideBar({ setOpened, opened }) {
   ));
 
   return (
-    <Navbar width={{ sm: 320 }} className={classes.navbar}>
+    <Navbar width={{ sm: 250, lg: 300 }} className={classes.navbar}>
       <Navbar.Section grow className={classes.links} component={ScrollArea}>
         <div className={classes.linksInner}>{links}</div>
       </Navbar.Section>

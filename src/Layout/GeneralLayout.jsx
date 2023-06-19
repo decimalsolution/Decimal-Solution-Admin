@@ -41,7 +41,7 @@ const GeneralLayout = () => {
           p="md"
           hiddenBreakpoint="md"
           hidden={!opened}
-          width={{ sm: 200, lg: 300 }}
+          width={{ sm: 250, lg: 300 }}
         >
           <SideBar opened={opened} setOpened={setOpened} />
         </Navbar>
