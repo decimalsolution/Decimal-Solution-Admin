@@ -23,10 +23,8 @@ const ViewJob = ({ rowData }) => {
       <Text align="justify">{rowData?.email}</Text>
       <Title order={3}>Applied Date</Title>
       <Text align="justify">
-        {moment(rowData?.createdDate).format("DD-MMM-YYYY")}
+        {new Date(rowData?.createdAt).toLocaleDateString()}
       </Text>
-      <Title order={3}>Date Of Birth</Title>
-      <Text align="justify">{moment(rowData?.DOB).format("DD-MMM-YYYY")}</Text>
       <Title order={3}>Address</Title>
       <Text align="justify">{rowData?.address}</Text>
       <Title order={3}>Resume</Title>

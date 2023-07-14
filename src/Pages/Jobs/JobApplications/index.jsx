@@ -37,6 +37,7 @@ const ViewJobApplications = () => {
         data.map((item) => {
           item.serialNo = data.indexOf(item) + 1;
         });
+        console.log("DATA", data);
         setTableData(data);
       },
     }

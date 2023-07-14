@@ -51,7 +51,7 @@ const GeneralLayout = () => {
           <div
             style={{ display: "flex", alignItems: "center", height: "100%" }}
           >
-            <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+            <MediaQuery largerThan="md" styles={{ display: "none" }}>
               <Burger
                 opened={opened}
                 onClick={() => setOpened((o) => !o)}
