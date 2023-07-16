@@ -35,12 +35,12 @@ const ViewJob = ({ rowData }) => {
       ) : (
         <Text>No file</Text>
       )}
-      <Title order={3}>Applicant Comments</Title>
+      {/* <Title order={3}>Applicant Comments</Title>
       <Text align="justify">
         {rowData?.applicantComments === ""
           ? "No Comments"
           : rowData?.applicantComments}
-      </Text>
+      </Text> */}
 
       {/* <Title order={3}>Application Deadline</Title>
       <Text>
