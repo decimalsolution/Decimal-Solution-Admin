@@ -38,7 +38,7 @@ export const Columns = [
     sortable: true,
     // center: true,
     width: "170px",
-    cell: (row) => moment(row.createdAt).format("DD MMMM YYYY"),
+    cell: (row) => moment(row.createdAt).toDate().toDateString(),  
   },
   {
     name: "Status",
@@ -50,7 +50,7 @@ export const Columns = [
       <StatusToggle
         status={row.blocked}
         id={row._id}
-        type={"blog"}
+        type={"testimonial"}
         queryName="fetchTestimonials"
       />
     ),
