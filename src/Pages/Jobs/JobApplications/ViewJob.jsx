@@ -23,7 +23,7 @@ const ViewJob = ({ rowData }) => {
       <Text align="justify">{rowData?.email}</Text>
       <Title order={3}>Applied Date</Title>
       <Text align="justify">
-        {new Date(rowData?.createdAt).toLocaleDateString()}
+        {new Date(rowData?.createdAt).toLocaleString()}
       </Text>
       <Title order={3}>Address</Title>
       <Text align="justify">{rowData?.address}</Text>
