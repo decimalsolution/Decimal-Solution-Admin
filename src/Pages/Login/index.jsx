@@ -53,7 +53,6 @@ export const Login = () => {
           });
           localStorage.setItem("userData", JSON.stringify(response?.data?.data));
           setUser({ token: response?.data?.data?.token });
-          navigate(routeNames.general.landing);
           form.reset();
         } else {
           showNotification({
