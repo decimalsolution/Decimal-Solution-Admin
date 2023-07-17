@@ -26,7 +26,7 @@ export const Columns = [
   },
   {
     name: "Blog Description",
-    selector: (row) => row.blogDescription,
+    selector: (row) =>  row.blogDescription.slice(0, 80) + "...",
     sortable: true,
     // center: true,
     // width: "250px",

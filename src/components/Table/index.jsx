@@ -26,8 +26,6 @@ const DataGrid = ({ columns, data, type, ...props }) => {
   const actionsMemo = React.useMemo(() => {
     data?.forEach((element) => {
       delete element?.id;
-      delete element?.createdAt;
-      delete element?.updatedAt;
     });
     let csv = Papa.unparse(data);
     return (

@@ -7,7 +7,7 @@ import {
   Navbar,
   useMantineTheme,
 } from "@mantine/core";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { SideBar } from "../components/Sidebar";
@@ -20,15 +20,29 @@ const GeneralLayout = () => {
   const theme = useMantineTheme();
   const { user, setUser } = useContext(UserContext);
   const [opened, setOpened] = useState(false);
-  let decoded = jwt_decode(user?.token);
 
-  const allowed = () => {
-    if (user?.token && decoded?.exp * 1000 > Date.now()) return true;
+  const [allowed, setAllowed] = useState(true);
+
+  useEffect(() => {
+    setAllowed(checkedAllowed());
+  }, [user?.toString()]);
+
+  const checkedAllowed = () => {
+    let decoded = {};
+    try {
+      decoded = jwt_decode(user?.token);
+    } catch (err) {
+      console.log(err);
+    }
+    if (user?.token && decoded?.exp * 1000 > Date.now()) {
+      return true;
+    }
     localStorage.clear();
     setUser({ token: null });
     return false;
   };
-  return allowed() ? (
+
+  return allowed && user?.token ? (
     <AppShell
       styles={{
         main: {
@@ -51,7 +65,7 @@ const GeneralLayout = () => {
           <div
             style={{ display: "flex", alignItems: "center", height: "100%" }}
           >
-            <MediaQuery largerThan="sm" styles={{ display: "none" }}>
+            <MediaQuery largerThan="md" styles={{ display: "none" }}>
               <Burger
                 opened={opened}
                 onClick={() => setOpened((o) => !o)}
@@ -73,7 +87,7 @@ const GeneralLayout = () => {
         mih={"77vh"}
         style={{ borderRadius: "10px" }}
       >
-        {allowed() && <Outlet />}
+        {allowed && <Outlet />}
       </Container>
     </AppShell>
   ) : (

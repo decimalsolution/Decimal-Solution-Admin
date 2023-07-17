@@ -1,4 +1,5 @@
 import {
+  Anchor,
   Flex,
   Image,
   SimpleGrid,
@@ -40,13 +41,28 @@ const ViewTeamMember = ({ rowData }) => {
         <Title order={3}>Member Priority to Display</Title>
         <Text>{rowData?.memberPriority}</Text>
         <Title order={3}>LinkedIn Profile</Title>
-        <Text align="justify">{rowData?.teamMemberLinkedInLink}</Text>
+        <HyperLink url={rowData?.teamMemberLinkedInLink} />
         <Title order={3}>Facebook Profile</Title>
-        <Text align="justify">{rowData?.teamMemberFacebookLink}</Text>
+        <HyperLink url={rowData?.teamMemberFacebookLink} />
         <Title order={3}>Twitter Profile</Title>
-        <Text align="justify">{rowData?.teamMemberTwitterLink}</Text>
+        <HyperLink url={rowData?.teamMemberTwitterLink} />
       </SimpleGrid>
     </Flex>
   );
 };
 export default ViewTeamMember;
+
+const HyperLink = ({ url }) => {    
+  const withHttp = (url) => {
+    if (!/^https?:\/\//i.test(url)) {
+      url = `http://${url}`;
+    }
+    return url;
+  };
+
+  return (
+    <Anchor href={withHttp(url)} target="_blank">
+      <Text align="justify">{url}</Text>
+    </Anchor>
+  );
+};

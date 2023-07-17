@@ -21,8 +21,7 @@ const ViewBlogs = () => {
   const [tableData, setTableData] = useState([]);
   const [search, setSearch] = useState("");
   const [blockedFilter, setBlockedFilter] = useState(null);
-  console.log("UserToekn",user.token)
-
+ 
   const { status } = useQuery(
     "fetchBlogs",
     () => {

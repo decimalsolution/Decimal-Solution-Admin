@@ -56,7 +56,6 @@ const ViewProjects = () => {
     setSearch("");
     setBlockedFilter(null);
   };
-  console.log(filteredItems);
   return (
     <Container size="xl" p="sm">
       <PageHeader label={"View Projects"} />
