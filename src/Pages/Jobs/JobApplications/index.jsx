@@ -59,7 +59,7 @@ const ViewJobApplications = () => {
       <PageHeader label={"View Job Applications"} />
       <Container size="xl" pb={"md"} bg={"white"} className={classes.table}>
         <Grid p="xs">
-          <Grid.Col md="6" lg="3">
+          <Grid.Col sm="9">
             <InputField
               placeholder={"Search Title"}
               leftIcon="search"

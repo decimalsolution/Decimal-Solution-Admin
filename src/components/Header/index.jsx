@@ -17,7 +17,7 @@ export const Header = () => {
       align={"center"}
     >
       <Image src={logo} width={"100px"} />
-      <Title order={2} color="purple">
+      <Title order={3} color="purple">
         Admin Panel
       </Title>
       <Flex
