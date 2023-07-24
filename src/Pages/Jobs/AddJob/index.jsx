@@ -151,6 +151,14 @@ export const AddJob = () => {
             { minWidth: "md", cols: 2 },
           ]}
         >
+          <Datepicker
+            label={"Application Deadline"}
+            placeholder={"Select Application Deadline"}
+            form={form}
+            withAsterisk
+            minDate={new Date()}
+            validateName={"jobApplicationDeadline"}
+          />
           <InputField
             label={"Title"}
             placeholder={"Enter Job Title"}
@@ -199,20 +207,20 @@ export const AddJob = () => {
             withAsterisk
             validateName={"minimumQualifications"}
           />
-          <InputField
-            label={"Minimum Experience"}
-            placeholder={"Enter Minimum Experience"}
-            form={form}
+          <SelectMenu
+            data={[
+              { value: "0-1 Year", label: "0-1 Year" },
+              { value: "1-3 Years", label: "1-3 Years" },
+              { value: "3-5 Years", label: "3-5 Years" },
+              { value: "5-7 Years", label: "5-7 Years" },
+              { value: "7-10 Years", label: "7-10 Years" },
+              { value: "10+ Years", label: "10+ Years" },
+            ]}
+            label="Job Experience"
+            placeholder="Select Experience"
             withAsterisk
-            validateName={"minimumExperience"}
-          />
-          <Datepicker
-            label={"Application Deadline"}
-            placeholder={"Select Application Deadline"}
             form={form}
-            withAsterisk
-            minDate={new Date()}
-            validateName={"jobApplicationDeadline"}
+            validateName="minimumExperience"
           />
           <InputField
             label={"Minimum Salary"}

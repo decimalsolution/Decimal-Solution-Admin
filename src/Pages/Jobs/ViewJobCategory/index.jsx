@@ -4,7 +4,7 @@ import React, { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import SelectMenu from "../../../components/SelectMenu";
 import { useStyles } from "../styles";
-import { Columns } from "./TableHeaders";
+import { Columns, filterbyStatus } from "./TableHeaders";
 import PageHeader from "../../../components/PageHeader";
 import DataGrid from "../../../components/Table";
 import InputField from "../../../components/InputField";
@@ -14,7 +14,7 @@ import { backendUrl } from "../../../constants/constants";
 import { routeNames } from "../../../Routes/routeNames";
 import { useNavigate } from "react-router";
 
-const ViewJobApplications = () => {
+const ViewJobCategory = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
@@ -23,9 +23,9 @@ const ViewJobApplications = () => {
   const [blockedFilter, setBlockedFilter] = useState(null);
 
   const { status } = useQuery(
-    "fetchJobApplications",
+    "fetchJobs",
     () => {
-      return axios.get(backendUrl + "/api/v1/jobapplications", {
+      return axios.get(backendUrl + "/api/v1/jobs", {
         headers: {
           authorization: `Bearer ${user.token}`,
         },
@@ -43,10 +43,10 @@ const ViewJobApplications = () => {
   );
   const filteredItems = tableData.filter((item) => {
     if (blockedFilter === null)
-      return item?.fullName?.toLowerCase().includes(search.toLowerCase());
+      return item?.title?.toLowerCase().includes(search.toLowerCase());
     else
       return (
-        item?.fullName?.toLowerCase().includes(search.toLowerCase()) &&
+        item?.title?.toLowerCase().includes(search.toLowerCase()) &&
         item?.blocked === blockedFilter
       );
   });
@@ -56,7 +56,7 @@ const ViewJobApplications = () => {
   };
   return (
     <Container size="xl" p="sm">
-      <PageHeader label={"View Job Applications"} />
+      <PageHeader label={"View Job Categories"} />
       <Container size="xl" pb={"md"} bg={"white"} className={classes.table}>
         <Grid p="xs">
           <Grid.Col md="6" lg="3">
@@ -69,8 +69,8 @@ const ViewJobApplications = () => {
           </Grid.Col>
           <Grid.Col sm="6" md="6" lg="3">
             <SelectMenu
-              placeholder={"Filter by Category"}
-              data={[]}
+              placeholder={"Filter by Status"}
+              data={filterbyStatus}
               value={blockedFilter}
               onChange={setBlockedFilter}
             />
@@ -84,9 +84,9 @@ const ViewJobApplications = () => {
           </Grid.Col>
           <Grid.Col sm="6" md={"6"} lg="4" style={{ textAlign: "end" }}>
             <Button
-              label={"Add Job"}
+              label={"Add Job Category"}
               leftIcon="plus"
-              onClick={() => navigate(routeNames.general.addJob)}
+              onClick={() => navigate(routeNames.general.addJobCategory)}
             />
           </Grid.Col>
         </Grid>
@@ -101,4 +101,4 @@ const ViewJobApplications = () => {
   );
 };
 
-export default ViewJobApplications;
+export default ViewJobCategory;

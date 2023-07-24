@@ -21,6 +21,8 @@ import { Dashboard } from "./Pages/Dashboard";
 import ViewJobApplications from "./Pages/Jobs/JobApplications";
 import { AddTestimonial } from "./Pages/Testimonial/AddTestimonial";
 import ViewTestimonial from "./Pages/Testimonial/ViewTestimonials";
+import { AddJobCategory } from "./Pages/Jobs/AddJobCategory";
+import ViewJobCategory from "./Pages/Jobs/ViewJobCategory";
 
 function App() {
   return (
@@ -44,18 +46,35 @@ function App() {
           element={<ViewProducts />}
         />
         <Route path={routeNames.general.addJob} element={<AddJob />} />
+        <Route
+          path={routeNames.general.addJobCategory}
+          element={<AddJobCategory />}
+        />
         <Route path={routeNames.general.viewJobs} element={<ViewJobs />} />
+        <Route
+          path={routeNames.general.viewJobCategory}
+          element={<ViewJobCategory />}
+        />
         <Route path={routeNames.general.addTeam} element={<AddTeam />} />
         <Route path={routeNames.general.viewTeams} element={<ViewTeams />} />
         <Route path={routeNames.general.settings} element={<Settings />} />
         <Route path={routeNames.general.aboutUs} element={<AboutUs />} />
         <Route path={routeNames.general.addBlog} element={<AddBlog />} />
         <Route path={routeNames.general.viewBlogs} element={<ViewBlogs />} />
-        <Route path={routeNames.general.addBlog} element={<AddBlog/>}/>
-        <Route path={routeNames.general.viewBlogs} element={<ViewBlogs/>}/>
-        <Route path={routeNames.general.jobApplications} element={<ViewJobApplications/>}/>
-        <Route path={routeNames.general.addTestimonial} element={<AddTestimonial/>}/>
-        <Route path={routeNames.general.viewTestimonial} element={<ViewTestimonial/>}/>
+        <Route path={routeNames.general.addBlog} element={<AddBlog />} />
+        <Route path={routeNames.general.viewBlogs} element={<ViewBlogs />} />
+        <Route
+          path={routeNames.general.jobApplications}
+          element={<ViewJobApplications />}
+        />
+        <Route
+          path={routeNames.general.addTestimonial}
+          element={<AddTestimonial />}
+        />
+        <Route
+          path={routeNames.general.viewTestimonial}
+          element={<ViewTestimonial />}
+        />
       </Route>
     </Routes>
   );

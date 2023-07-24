@@ -63,7 +63,6 @@ export const AddProduct = () => {
     }
   );
 
-
   useEffect(() => {
     if (state?.isUpdate) {
       form.setValues(state.data);
@@ -124,8 +123,8 @@ export const AddProduct = () => {
         />
         <SelectMenu
           data={categories}
-          label="Project Category"
-          placeholder="Select Project Category"
+          label="Service Category"
+          placeholder="Select Product Service Category"
           withAsterisk
           form={form}
           validateName="category"

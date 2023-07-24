@@ -78,8 +78,7 @@ export const AddTeam = () => {
         val.length < 1 || val?.length > 15 ? "Please Enter CNIC" : null,
       IDCardFront: (value) => (value ? null : "Please Upload Cnic front image"),
       IDCardBack: (value) => (value ? null : "Please Upload Cnic back image"),
-      teamMemberImage: (value) =>
-        value ? null : "Please Upload User photo",
+      teamMemberImage: (value) => (value ? null : "Please Upload User photo"),
     },
   });
 
@@ -133,60 +132,13 @@ export const AddTeam = () => {
         label={state?.isUpdate ? "Edit Team Member" : "Add Team Member"}
       />
       <form onSubmit={form.onSubmit((values) => handleAddTeam.mutate(values))}>
-        {/* <SimpleGrid
-          cols={2}
-          breakpoints={[{ maxWidth: "36rem", cols: 1, spacing: "sm" }]}
-        >
-           <DropZone
-            form={form}
-            folderName={"teamMember"}
-            name={"teamMemberImage"}
-            label="Team Member Image"
-          />
-          <InputField
-            label={"Team Member Name"}
-            placeholder={"Enter Team Member Name"}
-            form={form}
-            withAsterisk
-            validateName={"teamMemberName"}
-          />
-          <InputField
-            label={"Job Title"}
-            placeholder={"Enter Job Title"}
-            form={form}
-            withAsterisk
-            validateName={"teamMemberTitle"}
-          />
-          <InputField
-            label={"Email Address"}
-            placeholder={"Enter Email Address of Team Member"}
-            form={form}
-            withAsterisk
-            validateName={"teamMemberEmail"}
-          />
-          <InputField
-            label={"Contact Number"}
-            placeholder={"Enter Contact Number of Team Member"}
-            form={form}
-            withAsterisk
-            validateName={"teamMemberPhone"}
-          />
-          <InputField
-            label={"Priority"}
-            placeholder={"Enter Priority"}
-            form={form}
-            withAsterisk
-            validateName={"memberPriority"}
-          />
-        
-        </SimpleGrid> */}
         <Divider
           my="xl"
           label="Personal Information"
           labelPosition="center"
           fz={"lg"}
         />
-        <Flex gap={"xl"} justify={"space-around"}>
+        {/* <Flex gap={"xl"} justify={"space-around"}> */}
           <SimpleGrid
             cols={2}
             breakpoints={[{ maxWidth: "36rem", cols: 1, spacing: "sm" }]}
@@ -206,8 +158,8 @@ export const AddTeam = () => {
               validateName={"teamMemberTitle"}
             />
             <InputField
-              label={"Email Address"}
-              placeholder={"Enter Email Address"}
+              label={"Personam Email"}
+              placeholder={"Enter Personal Address"}
               form={form}
               withAsterisk
               validateName={"teamMemberEmail"}
@@ -239,13 +191,7 @@ export const AddTeam = () => {
               validateName={"memberPriority"}
             />
           </SimpleGrid>
-          <DropZone
-            form={form}
-            folderName={"teamMember"}
-            name={"teamMemberImage"}
-            label="Team Member Image"
-          />
-        </Flex>
+        {/* </Flex> */}
         <Divider
           my="xl"
           label="Contact Information"
@@ -330,6 +276,38 @@ export const AddTeam = () => {
             validateName={"IBAN"}
           />
         </SimpleGrid>
+        <Divider
+          my="xl"
+          label="Emergency Contact"
+          labelPosition="center"
+          fz={"lg"}
+        />
+        <SimpleGrid cols={2}>
+          <InputField
+            label={"Next Of Kin Name"}
+            placeholder={"Next Of Kin Name"}
+            form={form}
+            validateName={""}
+          />
+          <InputField
+            label={"Next Of Kin Relation"}
+            placeholder={"Next Of Kin Relation"}
+            form={form}
+            validateName={""}
+          />
+          <InputField
+            label={"Next Of Kin Contact"}
+            placeholder={"Next Of Kin Contact"}
+            form={form}
+            validateName={""}
+          />
+          <InputField
+            label={"Address"}
+            placeholder={"Address"}
+            form={form}
+            validateName={""}
+          />
+        </SimpleGrid>
 
         <Divider
           my="xl"
@@ -337,22 +315,14 @@ export const AddTeam = () => {
           labelPosition="center"
           fz={"lg"}
         />
-        {/* <SimpleGrid cols={2}>
-        <DropZone
-            form={form}
-            folderName={"teamMember"}
-            name={"teamMemberImage"}
-            label="Team Member Image"
-          />
+
+        <Group position="center">
           <DropZone
             form={form}
             folderName={"teamMember"}
             name={"teamMemberImage"}
             label="Team Member Image"
           />
-        </SimpleGrid> */}
-
-        <Group position="center">
           <DropZone
             form={form}
             folderName={"teamMember"}

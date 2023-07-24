@@ -3,6 +3,7 @@ import ActionIcons from "../../../components/ActionIcons";
 import StatusToggle from "../../../components/StatusToggle";
 import ViewJob from "./ViewJob";
 import moment from "moment";
+import AddComment from "./AddComment";
 
 export const Columns = [
   {
@@ -29,42 +30,42 @@ export const Columns = [
     selector: (row) => moment(row.createdAt).format("DD-MMM-YYYY"),
     sortable: true,
     // center: true,
-    width: "200px",
+    width: "150px",
   },
 
   {
     name: "Gender",
     selector: (row) => row?.gender,
     sortable: true,
-    // center: true,
-    width: "150px",
+    center: true,
+    width: "120px",
   },
   {
     name: "Resume",
     selector: (row) => row?.resume,
     sortable: true,
-    // center: true,
-    width: "120px",
+    center: true,
+    width: "110px",
     cell: (row) => {
-      return row?.resume !== "" ? <Anchor href={row?.resume} target="_blank">File</Anchor> : <Text>No file</Text>;
+      return row?.resume !== "" ? (
+        <Anchor href={row?.resume} target="_blank">
+          File
+        </Anchor>
+      ) : (
+        <Text>No file</Text>
+      );
     },
   },
-
-  // {
-  //   name: "Status",
-  //   selector: (row) => row.blocked,
-  //   width: "150px",
-  //   sortable: true,
-  //   center: true,
-  //   cell: (row) => (
-  //     <StatusToggle
-  //       status={row.blocked}
-  //       id={row._id}
-  //       type={"jobs"}
-  //       queryName="fetchJobs"
-  //     />
-  //   ),
-  // },
+  {
+    name: "Add Comments",
+    selector: (row) => row?.resume,
+    sortable: true,
+    center: true,
+    width: "200px",
+    cell: (row) => {
+      return <AddComment />;
+    },
+  },
   {
     name: "Actions",
     center: true,
@@ -79,10 +80,4 @@ export const Columns = [
       />
     ),
   },
-];
-
-export const filterbyStatus = [
-  { label: "All", value: null },
-  { label: "Blocked", value: true },
-  { label: "Unblocked", value: false },
 ];

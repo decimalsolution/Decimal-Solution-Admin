@@ -41,7 +41,6 @@ const DataGrid = ({ columns, data, type, ...props }) => {
     );
   }, [data, type]);
 
-  
   return (
     <Box
       style={{
@@ -59,9 +58,7 @@ const DataGrid = ({ columns, data, type, ...props }) => {
         subHeaderAlign="right"
         subHeaderWrap
         // selectableRows
-        progressComponent={
-          <Loader my={10} color={theme.primaryColor} />
-        }
+        progressComponent={<Loader my={10} color={theme.primaryColor} />}
         // actions={actionsMemo}
         customStyles={customStyles}
         {...props}

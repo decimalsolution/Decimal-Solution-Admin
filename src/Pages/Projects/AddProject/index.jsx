@@ -41,7 +41,9 @@ export const AddProject = () => {
       description: (value) =>
         value?.length > 0 ? null : "Please enter project description",
       shortDescription: (value) =>
-        value?.length > 0 ? null : "Please enter short description",
+        value?.length > 1 && value?.length < 60
+          ? null
+          : "Please enter short description between 2 and 60 characters",
       coverImage: (value) => (value ? null : "Please upload a cover Image"),
       homeImage: (value) => (value ? null : "Please upload a home Image"),
       link: (value) => (value ? null : "Please enter project link"),
@@ -130,8 +132,8 @@ export const AddProject = () => {
         />
         <SelectMenu
           data={categories}
-          label="Project Category"
-          placeholder="Select Project Category"
+          label="Project Service"
+          placeholder="Select Project Service Category"
           withAsterisk
           form={form}
           validateName="category"

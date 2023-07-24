@@ -46,8 +46,10 @@ export const sidebarData = [
     icon: Briefcase,
     links: [
       { label: "Add Job", link: routeNames.general.addJob },
+      { label: "Add Job Category", link: routeNames.general.addJobCategory },
       { label: "View Jobs", link: routeNames.general.viewJobs },
-      { label: "Job Applications",link: routeNames.general.jobApplications },
+      { label: "View Job Categories", link: routeNames.general.viewJobCategory },
+      { label: "Job Applications", link: routeNames.general.jobApplications },
     ],
   },
   {
