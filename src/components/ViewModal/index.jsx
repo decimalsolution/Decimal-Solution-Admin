@@ -2,7 +2,7 @@ import {
   Container,
   Group,
   Modal as ModalMantine,
-  createStyles
+  createStyles,
 } from "@mantine/core";
 import Button from "../Button";
 
@@ -25,14 +25,18 @@ const ViewModal = ({ opened, setOpened, children, title }) => {
       title={title}
       centered
       radius={"lg"}
-      size={"lg"}
+      size={"xl"}
       styles={{
         overlay: {
           backdropFilter: "blur(3px)",
         },
+        inner: {
+          width: "94%",
+          paddingInline: "0px !important",
+        },
       }}
     >
-      <Container className={classes.root} p="0px" size={"xl"}>
+      <Container className={classes.root} p="0px">
         {children}
         <Group pt={"sm"} ml={"auto"}>
           <Button label="Close" onClick={() => setOpened(false)} />

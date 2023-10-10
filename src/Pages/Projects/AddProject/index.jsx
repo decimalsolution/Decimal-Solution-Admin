@@ -28,7 +28,7 @@ export const AddProject = () => {
       description: "",
       shortDescription: "",
       coverImage: null,
-      homeImage: null,
+      // homeImage: null,
       link: "",
       category: "",
     },
@@ -45,7 +45,7 @@ export const AddProject = () => {
           ? null
           : "Please enter short description between 2 and 60 characters",
       coverImage: (value) => (value ? null : "Please upload a cover Image"),
-      homeImage: (value) => (value ? null : "Please upload a home Image"),
+      // homeImage: (value) => (value ? null : "Please upload a home Image"),
       link: (value) => (value ? null : "Please enter project link"),
       category: (value) => (value ? null : "Please select category"),
     },
@@ -168,12 +168,12 @@ export const AddProject = () => {
             name={"coverImage"}
             label="Cover Image"
           />
-          <DropZone
+          {/* <DropZone
             form={form}
             folderName={"service"}
             name={"homeImage"}
             label="Home Image"
-          />
+          /> */}
         </Group>
         <Group position="right" mt={"md"}>
           <Button

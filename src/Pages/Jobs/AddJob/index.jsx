@@ -278,7 +278,7 @@ export const AddJob = () => {
           <Button
             label={"Cancel"}
             variant={"outline"}
-            onClick={() => navigate(routeNames.general.viewProducts)}
+            onClick={() => navigate(routeNames.general.viewJobs)}
           />
           <Button
             label={state?.isUpdate ? "Edit Job" : "Add Job"}

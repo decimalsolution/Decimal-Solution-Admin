@@ -21,11 +21,11 @@ const ViewBlogs = () => {
   const [tableData, setTableData] = useState([]);
   const [search, setSearch] = useState("");
   const [blockedFilter, setBlockedFilter] = useState(null);
- 
+
   const { status } = useQuery(
     "fetchBlogs",
     () => {
-      return axios.get(backendUrl + "/api/v1/blog",{
+      return axios.get(backendUrl + "/api/v1/blog", {
         headers: {
           authorization: `Bearer ${user.token}`,
         },
@@ -59,7 +59,7 @@ const ViewBlogs = () => {
       <PageHeader label={"View Blogs"} />
       <Container size="xl" pb={"md"} bg={"white"} className={classes.table}>
         <Grid p="xs">
-          <Grid.Col md="6" lg="3">
+          <Grid.Col sm="6" md={"6"} lg="3">
             <InputField
               placeholder={"Search Title"}
               leftIcon="search"
@@ -67,7 +67,7 @@ const ViewBlogs = () => {
               onChange={(v) => setSearch(v.target.value)}
             />
           </Grid.Col>
-          <Grid.Col sm="6" md="6" lg="3">
+          <Grid.Col sm="6" md={"6"} lg="3">
             <SelectMenu
               placeholder={"Filter by Status"}
               data={filterbyStatus}
@@ -75,16 +75,18 @@ const ViewBlogs = () => {
               onChange={setBlockedFilter}
             />
           </Grid.Col>
-          <Grid.Col sm="6" md="3" lg={"2"} style={{ textAlign: "end" }}>
+          <Grid.Col sm="6" md={"6"} lg="3">
             <Button
               label={"Clear Filters"}
+              fullWidth
               variant="outline"
               onClick={handleClearFilters}
             />
           </Grid.Col>
-          <Grid.Col sm="6" md={"6"} lg="4" style={{ textAlign: "end" }}>
+          <Grid.Col sm="6" md={"6"} lg="3">
             <Button
               label={"Add Blog"}
+              fullWidth
               leftIcon="plus"
               onClick={() => navigate(routeNames.general.addBlog)}
             />

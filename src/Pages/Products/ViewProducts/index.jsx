@@ -25,7 +25,7 @@ const ViewProducts = () => {
   const { status } = useQuery(
     "fetchProducts",
     () => {
-      return axios.get(backendUrl + "/api/v1/product",{
+      return axios.get(backendUrl + "/api/v1/product", {
         headers: {
           authorization: `Bearer ${user.token}`,
         },
@@ -59,7 +59,7 @@ const ViewProducts = () => {
       <PageHeader label={"View Products"} />
       <Container size="xl" pb={"md"} bg={"white"} className={classes.table}>
         <Grid p="xs">
-          <Grid.Col md="6" lg="3">
+          <Grid.Col sm="6" md="6" lg="3">
             <InputField
               placeholder={"Search Title"}
               leftIcon="search"
@@ -75,15 +75,17 @@ const ViewProducts = () => {
               onChange={setBlockedFilter}
             />
           </Grid.Col>
-          <Grid.Col sm="6" md="3" lg={"2"} style={{ textAlign: "end" }}>
+          <Grid.Col sm="6" md="6" lg={"3"}>
             <Button
+              fullWidth
               label={"Clear Filters"}
               variant="outline"
               onClick={handleClearFilters}
             />
           </Grid.Col>
-          <Grid.Col sm="6" md={"6"} lg="4" style={{ textAlign: "end" }}>
+          <Grid.Col sm="6" md={"6"} lg="3">
             <Button
+              fullWidth
               label={"Add Product"}
               leftIcon="plus"
               onClick={() => navigate(routeNames.general.addProduct)}

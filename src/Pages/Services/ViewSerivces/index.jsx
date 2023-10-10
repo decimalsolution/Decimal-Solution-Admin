@@ -75,17 +75,19 @@ const ViewServices = () => {
               onChange={setBlockedFilter}
             />
           </Grid.Col>
-          <Grid.Col sm="6" md="3" lg={"2"} style={{ textAlign: "end" }}>
+          <Grid.Col sm="6" md="6" lg={"3"}>
             <Button
               label={"Clear Filters"}
               variant="outline"
+              fullWidth
               onClick={handleClearFilters}
             />
           </Grid.Col>
-          <Grid.Col sm="6" md={"6"} lg="4" style={{ textAlign: "end" }}>
+          <Grid.Col sm="6" md={"6"} lg="3">
             <Button
               label={"Add Service"}
               leftIcon="plus"
+              fullWidth
               onClick={() => navigate(routeNames.general.addService)}
             />
           </Grid.Col>

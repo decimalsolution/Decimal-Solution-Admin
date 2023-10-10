@@ -21,12 +21,16 @@ const ViewJob = ({ rowData }) => {
       <Text align="justify">{rowData?.fullName}</Text>
       <Title order={3}>Applicant Email</Title>
       <Text align="justify">{rowData?.email}</Text>
+      <Title order={3}>Applicant Contact</Title>
+      <Text align="justify">{rowData?.contactNumber}</Text>
       <Title order={3}>Applied Date</Title>
       <Text align="justify">
         {new Date(rowData?.createdAt).toLocaleString()}
       </Text>
       <Title order={3}>Address</Title>
       <Text align="justify">{rowData?.address}</Text>
+      <Title order={3}>Experience</Title>
+      <Text align="justify">{rowData?.yearsOfExperience + " Years"}</Text>
       <Title order={3}>Resume</Title>
       {rowData?.resume !== "" ? (
         <Anchor href={rowData?.resume} target="_blank">
@@ -35,6 +39,10 @@ const ViewJob = ({ rowData }) => {
       ) : (
         <Text>No file</Text>
       )}
+      <Title order={3}>Applicant Comments</Title>
+      <Text align="justify">{rowData?.applicantComments || "NA"}</Text>
+      <Title order={3}>Admin Comments</Title>
+      <Text align="justify">{rowData?.adminComments || "NA"}</Text>
       {/* <Title order={3}>Applicant Comments</Title>
       <Text align="justify">
         {rowData?.applicantComments === ""

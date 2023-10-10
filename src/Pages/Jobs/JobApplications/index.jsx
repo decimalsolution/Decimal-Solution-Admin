@@ -59,7 +59,7 @@ const ViewJobApplications = () => {
       <PageHeader label={"View Job Applications"} />
       <Container size="xl" pb={"md"} bg={"white"} className={classes.table}>
         <Grid p="xs">
-          <Grid.Col sm="9">
+          <Grid.Col sm="6" md={"6"} lg="3">
             <InputField
               placeholder={"Search Title"}
               leftIcon="search"
@@ -75,15 +75,17 @@ const ViewJobApplications = () => {
               onChange={setBlockedFilter}
             />
           </Grid.Col>
-          <Grid.Col sm="6" md="3" lg={"2"} style={{ textAlign: "end" }}>
+          <Grid.Col sm="6" md={"6"} lg="3">
             <Button
+              fullWidth
               label={"Clear Filters"}
               variant="outline"
               onClick={handleClearFilters}
             />
           </Grid.Col>
-          <Grid.Col sm="6" md={"6"} lg="4" style={{ textAlign: "end" }}>
+          <Grid.Col sm="6" md={"6"} lg="3">
             <Button
+              fullWidth
               label={"Add Job"}
               leftIcon="plus"
               onClick={() => navigate(routeNames.general.addJob)}

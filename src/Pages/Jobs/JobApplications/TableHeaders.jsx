@@ -63,7 +63,7 @@ export const Columns = [
     center: true,
     width: "200px",
     cell: (row) => {
-      return <AddComment />;
+      return <AddComment data={row}/>;
     },
   },
   {

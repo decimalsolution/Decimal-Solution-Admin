@@ -81,8 +81,9 @@ const GeneralLayout = () => {
     >
       <Container
         bg="white"
+        px={0}
         m="auto"
-        p="md"
+        py="md"
         size={"xl"}
         mih={"77vh"}
         style={{ borderRadius: "10px" }}

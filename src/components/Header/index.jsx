@@ -5,8 +5,10 @@ import { useNavigate } from "react-router";
 import { routeNames } from "../../Routes/routeNames";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
+import { useMediaQuery } from "@mantine/hooks";
 
 export const Header = () => {
+  const isMobile = useMediaQuery("(max-width: 820px)");
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   return (
@@ -16,8 +18,8 @@ export const Header = () => {
       justify={"space-between"}
       align={"center"}
     >
-      <Image src={logo} width={"100px"} />
-      <Title order={3} color="purple">
+      <Image src={logo} width={isMobile ? 50 : "100px"} />
+      <Title order={isMobile ? 6 : 3} color="purple">
         Admin Panel
       </Title>
       <Flex
