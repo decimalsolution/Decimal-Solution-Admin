@@ -20,7 +20,7 @@ export const Header = () => {
     >
       <Image src={logo} width={isMobile ? 50 : "100px"} />
       <Title order={isMobile ? 6 : 3} color="purple">
-        Admin Panel
+        Admin Panell
       </Title>
       <Flex
         gap={"sm"}
