@@ -37,7 +37,7 @@ export const AddService = () => {
       description: (value) =>
         value?.length > 0 ? null : "Please enter project description",
       shortDescription: (value) =>
-        value?.length > 0 && value?.length < 60
+        value?.length > 0 && value?.length < 80
           ? null
           : "Please enter short description",
       coverImage: (value) => (value ? null : "Please upload a cover Image"),
