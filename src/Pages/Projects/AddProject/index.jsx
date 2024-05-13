@@ -41,9 +41,9 @@ export const AddProject = () => {
       description: (value) =>
         value?.length > 0 ? null : "Please enter project description",
       shortDescription: (value) =>
-        value?.length > 1 && value?.length < 60
+        value?.length > 1 && value?.length < 80
           ? null
-          : "Please enter short description between 2 and 60 characters",
+          : "Please enter short description between 2 and 80 characters",
       coverImage: (value) => (value ? null : "Please upload a cover Image"),
       // homeImage: (value) => (value ? null : "Please upload a home Image"),
       link: (value) => (value ? null : "Please enter project link"),
