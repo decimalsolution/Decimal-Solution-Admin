@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
 import axios from "axios";
-import { Loader, SimpleGrid } from "@mantine/core";
+import { Loader, SimpleGrid, Text } from "@mantine/core";
 import PageHeader from "../../components/PageHeader";
 import { backendUrl } from "../../constants/constants";
 import { UserContext } from "../../contexts/UserContext";
 import { useQuery } from "react-query";
-import Card from "./Card"
+import Card from "./Card";
 
 export const Dashboard = () => {
   const { user } = useContext(UserContext);
@@ -16,7 +16,7 @@ export const Dashboard = () => {
     () => {
       return axios.get(backendUrl + "/api/v1/dashboard", {
         headers: {
-          authorization: `Bearer ${user.token}`,
+          authorization: `Bearer ${user.token}`, // Corrected
         },
       });
     },
@@ -27,23 +27,29 @@ export const Dashboard = () => {
       },
     }
   );
+
   return (
     <>
       <PageHeader label={"Dashboard"} />
       {status === "loading" ? (
-        <Loader style={{ width:'100%', margin: "auto" }} />
+        <Loader style={{ width: "100%", margin: "auto" }} />
       ) : (
         <SimpleGrid
-          verticalSpacing={"xl"}
+          cols={3}
+          spacing="lg"
           breakpoints={[
-            { minWidth: "sm", cols: 2 },
-            { minWidth: "md", cols: 3 },
-            { minWidth: "lg", cols: 4 },
+            { maxWidth: 1500, cols: 3 },
+            { maxWidth: 1150, cols: 2 },
+            { maxWidth: 500, cols: 1 },
           ]}
         >
-          {data.map((obj, ind) => (
-            <Card key={ind} data={obj} />
-          ))}
+          {data.length ? (
+            data.map((obj, ind) => <Card key={ind} data={obj} />)
+          ) : (
+            <Text align="center" size="lg">
+              No data available
+            </Text>
+          )}
         </SimpleGrid>
       )}
     </>

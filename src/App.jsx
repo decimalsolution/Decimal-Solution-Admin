@@ -10,8 +10,11 @@ import { AddProduct } from "./Pages/Products/AddProduct";
 import ViewProducts from "./Pages/Products/ViewProducts";
 import { AddJob } from "./Pages/Jobs/AddJob";
 import ViewJobs from "./Pages/Jobs/ViewJobs";
+import ViewQuotes from "./Pages/Quotes/ViewQuotes";
 import { AddTeam } from "./Pages/Team/AddTeam";
 import ViewTeams from "./Pages/Team/ViewTeamMembers";
+import ViewXTeams from "./Pages/Team/ViewXTeamMembers";
+
 import { AddBlog } from "./Pages/Blog/AddBlog";
 import ViewBlogs from "./Pages/Blog/ViewBlogs";
 import { Settings } from "./Pages/Settings";
@@ -57,6 +60,8 @@ function App() {
         />
         <Route path={routeNames.general.addTeam} element={<AddTeam />} />
         <Route path={routeNames.general.viewTeams} element={<ViewTeams />} />
+        <Route path={routeNames.general.viewXTeams} element={<ViewXTeams />} />
+
         <Route path={routeNames.general.settings} element={<Settings />} />
         <Route path={routeNames.general.aboutUs} element={<AboutUs />} />
         <Route path={routeNames.general.addBlog} element={<AddBlog />} />
@@ -74,6 +79,10 @@ function App() {
         <Route
           path={routeNames.general.viewTestimonial}
           element={<ViewTestimonial />}
+        />
+         <Route
+          path={routeNames.general.viewQuotes}
+          element={<ViewQuotes/>}
         />
       </Route>
     </Routes>

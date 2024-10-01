@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { createStyles, TextInput } from "@mantine/core";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";

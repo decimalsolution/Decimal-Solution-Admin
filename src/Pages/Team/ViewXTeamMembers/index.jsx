@@ -14,35 +14,13 @@ import { backendUrl } from "../../../constants/constants";
 import { routeNames } from "../../../Routes/routeNames";
 import { useNavigate } from "react-router";
 
-const ViewTeams = () => {
+const ViewXTeams = () => {
   const { classes } = useStyles();
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const [tableData, setTableData] = useState([]);
   const [search, setSearch] = useState("");
   const [blockedFilter, setBlockedFilter] = useState(null);
-
-  // const { status } = useQuery(
-  //   "fetchTeamMembers",
-  //   () => {
-  //     return axios.get(backendUrl + "/api/v1/teamMember", {
-  //       headers: {
-  //         authorization: `Bearer ${user.token}`,
-  //       },
-  //     });
-  //   },
-  //   {
-  //     onSuccess: (res) => {
-  //       const data = res.data.data;
-  //       data.map((item) => {
-  //         item.serialNo = data.indexOf(item) + 1;
-  //       });
-  //       setTableData(data);
-  //     },
-  //   }
-  // );
-
-
 
   const { status } = useQuery(
     "fetchTeamMembers",
@@ -56,44 +34,27 @@ const ViewTeams = () => {
     {
       onSuccess: (res) => {
         const data = res.data.data;
-        data.map((item) => {
-          item.serialNo = data.indexOf(item) + 1;
+        data.forEach((item, index) => {
+          item.serialNo = index + 1;
         });
-        setTableData(data.filter(item => !item.left)); // Filter out left members
+        setTableData(data);
       },
     }
   );
-  
-  // const filteredItems = tableData.filter((item) => {
-  //   if (blockedFilter === null)
-  //     return item?.teamMemberName?.toLowerCase().includes(search.toLowerCase());
-  //   else
-  //     return (
-  //       item?.teamMemberName?.toLowerCase().includes(search.toLowerCase()) &&
-  //       item?.blocked === blockedFilter
-  //     );
-  // });
 
-
-
+  // Filter to show only team members who have left
   const filteredItems = tableData.filter((item) => {
-    if (blockedFilter === null)
-      return item?.teamMemberName?.toLowerCase().includes(search.toLowerCase());
-    else
-      return (
-        item?.teamMemberName?.toLowerCase().includes(search.toLowerCase()) &&
-        item?.blocked === blockedFilter &&
-        !item.left // Ensure left members are excluded
-      );
+    return item?.left === true; // Only show members who have left
   });
-  
+
   const handleClearFilters = () => {
     setSearch("");
     setBlockedFilter(null);
   };
+
   return (
     <Container size="xl" p="sm">
-      <PageHeader label={"View Team Members"} />
+      <PageHeader label={"View Left Team Members"} />
       <Container size="xl" pb={"md"} bg={"white"} className={classes.table}>
         <Grid p="xs">
           <Grid.Col sm="6" md={"6"} lg="3">
@@ -140,4 +101,4 @@ const ViewTeams = () => {
   );
 };
 
-export default ViewTeams;
+export default ViewXTeams;

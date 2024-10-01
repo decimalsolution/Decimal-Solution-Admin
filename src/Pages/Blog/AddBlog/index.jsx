@@ -126,7 +126,7 @@ export const AddBlog = () => {
           validateName={"blogData"}
         />
         <TextArea
-          label={"Detail Description"}
+          label={"Meta Description"}
           placeholder={"Enter Detailed Description"}
           rows="4"
           form={form}

@@ -1,37 +1,68 @@
-import { Container, Text } from "@mantine/core";
+/* eslint-disable react/prop-types */
+
+import { Container, Text, Flex } from "@mantine/core";
 import { useStyles } from "./styles";
 import { useNavigate } from "react-router-dom";
 import { routeNames } from "../../Routes/routeNames";
+import {
+  AiOutlineAppstore,
+  AiOutlineProject,
+  AiOutlineShoppingCart,
+  AiOutlineFileDone,
+  AiOutlineFileSearch,
+  AiOutlineUser,
+  AiOutlineTeam,
+  AiOutlineRead,
+} from "react-icons/ai";
+
+const iconMap = {
+  Services: <AiOutlineAppstore size={36} />,
+  Projects: <AiOutlineProject size={36} />,
+  Products: <AiOutlineShoppingCart size={36} />,
+  "Job Applications": <AiOutlineFileDone size={36} />,
+  Jobs: <AiOutlineFileSearch size={36} />,
+  Testimonials: <AiOutlineUser size={36} />,
+  "Team Members": <AiOutlineTeam size={36} />,
+  Blogs: <AiOutlineRead size={36} />,
+};
 
 const Card = ({ data }) => {
   const { classes } = useStyles();
   const navigate = useNavigate();
 
   const handleClick = () => {
-    if (data.label === "Services") navigate(routeNames.general.viewService);
-    else if (data.label === "Projects")
-      navigate(routeNames.general.viewProjects);
-    else if (data.label === "Products")
-      navigate(routeNames.general.viewProducts);
-    else if (data.label === "Job Applications")
-      navigate(routeNames.general.jobApplications);
-    else if (data.label === "Jobs") navigate(routeNames.general.viewJobs);
-    else if (data.label === "Testimonials")
-      navigate(routeNames.general.viewTestimonial);
-    else if (data.label === "Team Members")
-      navigate(routeNames.general.viewTeams);
-    else if (data.label === "Blogs") navigate(routeNames.general.viewBlogs);
-    else return;
+    const routes = {
+      Services: routeNames.general.viewService,
+      Projects: routeNames.general.viewProjects,
+      Products: routeNames.general.viewProducts,
+      "Job Applications": routeNames.general.jobApplications,
+      Jobs: routeNames.general.viewJobs,
+      Testimonials: routeNames.general.viewTestimonial,
+      "Team Members": routeNames.general.viewTeams,
+      Blogs: routeNames.general.viewBlogs,
+    };
+
+    const route = routes[data.label];
+    if (route) {
+      navigate(route);
+    }
   };
+
   return (
     <Container className={classes.card} onClick={handleClick}>
-      <Text fz="1.3rem" fw={"bold"} align="center">
-        {data?.label}
-      </Text>
-      <Text fz="30px" fw={"bold"}>
-        {data?.value}
-      </Text>
+      <Flex justify="space-between" align="center" style={{ width: "100%" }}>
+        <div>
+          <Text size="lg" className={classes.label}>
+            {data?.label}
+          </Text>
+          <Text size="xl" weight={700} className={classes.value}>
+            {data?.value}
+          </Text>
+        </div>
+        <div className={classes.icon}>{iconMap[data.label]}</div>
+      </Flex>
     </Container>
   );
 };
+
 export default Card;

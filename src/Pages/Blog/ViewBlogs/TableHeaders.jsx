@@ -23,6 +23,7 @@ export const Columns = [
     sortable: true,
     // center: true,
     width: "250px",
+    
   },
   {
     name: "Blog Description",

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import axios from "axios";
 import { Container, Group } from "@mantine/core";
 import { useMutation, useQuery } from "react-query";

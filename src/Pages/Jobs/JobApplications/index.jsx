@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Container, Grid } from "@mantine/core";
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import SelectMenu from "../../../components/SelectMenu";
 import { useStyles } from "../styles";
@@ -21,7 +22,9 @@ const ViewJobApplications = () => {
   const [tableData, setTableData] = useState([]);
   const [search, setSearch] = useState("");
   const [blockedFilter, setBlockedFilter] = useState(null);
+  const [selectedResumes, setSelectedResumes] = useState([]);
 
+  // Fetch job applications
   const { status } = useQuery(
     "fetchJobApplications",
     () => {
@@ -37,10 +40,36 @@ const ViewJobApplications = () => {
         data.map((item) => {
           item.serialNo = data.indexOf(item) + 1;
         });
-        setTableData(data);
+        setTableData(data); // Set job applications data
       },
     }
   );
+
+
+
+
+  // const {} = useQuery(
+  //   "fetchJobApplications",
+  //   () => {
+  //     return axios.get(backendUrl + "/api/v1/jobCategory/", {
+  //       headers: {
+  //         authorization: `Bearer ${user.token}`,
+  //       },
+  //     });
+  //   },
+  //   {
+  //     onSuccess: (res) => {
+  //       const data = res.data.data;
+  //       data.map((item) => {
+  //         item.serialNo = data.indexOf(item) + 1;
+  //       });
+  //       setTableData(data); // Set job applications data
+  //     },
+  //   }
+  // );
+
+
+  // Filter job applications based on search and blocked filter
   const filteredItems = tableData.filter((item) => {
     if (blockedFilter === null)
       return item?.fullName?.toLowerCase().includes(search.toLowerCase());
@@ -50,10 +79,62 @@ const ViewJobApplications = () => {
         item?.blocked === blockedFilter
       );
   });
+
+  // Clear filters
   const handleClearFilters = () => {
     setSearch("");
     setBlockedFilter(null);
   };
+
+  // Handle checkbox change for selecting resumes
+  const handleCheckboxChange = (id) => {
+    setSelectedResumes((prev) =>
+      prev.includes(id)
+        ? prev.filter((resumeId) => resumeId !== id)
+        : [...prev, id]
+    );
+  };
+
+  // Download resumes logic
+
+  const downloadResume = async (resumeLinks) => {
+    for (const link of resumeLinks) {
+      try {
+        // Trigger the download by navigating to the backend endpoint
+        const response = await axios.get(link, {
+          responseType: "blob", // Set response type to blob
+        });
+
+        // Create a Blob from the response
+        const blob = new Blob([response.data], { type: "application/pdf" });
+        const url = window.URL.createObjectURL(blob);
+
+        // Create a temporary anchor element to trigger the download
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = link.split("/").pop(); // Extract the filename
+        document.body.appendChild(a);
+        a.click();
+        a.remove(); // Clean up the anchor element
+        window.URL.revokeObjectURL(url); // Release the blob URL
+      } catch (error) {
+        console.error(`Error downloading ${link}:`, error);
+      }
+    }
+  };
+
+  const handleDownloadSelected = async (event) => {
+    event.preventDefault();
+
+    // Create an array of download URLs from the selected resumes
+    const downloadLinks = selectedResumes.map((resumeId) => {
+      return `${backendUrl}/api/v1/jobapplications/download/${resumeId}`;
+    });
+
+    // Trigger the download process for each resume link
+    await downloadResume(downloadLinks);
+  };
+
   return (
     <Container size="xl" p="sm">
       <PageHeader label={"View Job Applications"} />
@@ -91,9 +172,29 @@ const ViewJobApplications = () => {
               onClick={() => navigate(routeNames.general.addJob)}
             />
           </Grid.Col>
+          <Grid.Col sm="12">
+            <Button
+              fullWidth
+              label={"Download Selected Resumes"}
+              onClick={(event) => handleDownloadSelected(event)}
+              disabled={selectedResumes.length === 0}
+            />
+          </Grid.Col>
         </Grid>
         <DataGrid
-          columns={Columns}
+          columns={[
+            {
+              name: "Select",
+              cell: (row) => (
+                <input
+                  type="checkbox"
+                  checked={selectedResumes.includes(row._id)}
+                  onChange={() => handleCheckboxChange(row._id)}
+                />
+              ),
+            },
+            ...Columns, // Your existing columns
+          ]}
           data={filteredItems}
           progressPending={status === "loading"}
           type="jobs"

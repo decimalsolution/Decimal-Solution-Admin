@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Anchor, Box, Group, Modal } from "@mantine/core";
 import TextArea from "../../../components/TextArea";
 import Button from "../../../components/Button";

@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import { Anchor, Text } from "@mantine/core";
 import ActionIcons from "../../../components/ActionIcons";
 import StatusToggle from "../../../components/StatusToggle";
@@ -24,6 +26,13 @@ export const Columns = [
     selector: (row) => row?.email,
     width: "170px",
     sortable: true,
+  },
+  {
+    name: "Applied Post",
+    selector: (row) =>(row.job?.title),
+    sortable: true,
+    // center: true,
+    width: "150px",
   },
   {
     name: "Applied Date",

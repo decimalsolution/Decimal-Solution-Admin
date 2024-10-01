@@ -24,7 +24,7 @@ export const Columns = [
   },
   {
     name: "Category",
-    selector: (row) => row.category.title,
+    selector: (row) => row?.category?.title,
     sortable: true,
     // center: true,
     width: "250px",

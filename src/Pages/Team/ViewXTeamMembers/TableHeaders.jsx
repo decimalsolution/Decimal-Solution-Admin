@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+import { Texture } from "tabler-icons-react";
 import ActionIcons from "../../../components/ActionIcons";
 import StatusToggle from "../../../components/StatusToggle";
 import TableImageView from "../../../components/TableImageView";
@@ -9,6 +11,7 @@ export const Columns = [
     selector: (row) => row.serialNo,
     width: "100px",
     sortable: true,
+    cell: (row, rowIndex) => rowIndex + 1, 
   },
   {
     name: "",
@@ -66,6 +69,7 @@ export const Columns = [
         del={true}
         edit={true}
         left={true}
+
         viewData={<ViewTeamMember rowData={row} />}
         type="teamMember"
       />

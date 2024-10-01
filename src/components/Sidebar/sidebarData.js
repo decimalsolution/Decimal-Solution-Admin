@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import {
   AddressBook,
   Book2,
@@ -45,10 +47,10 @@ export const sidebarData = [
     label: "Jobs",
     icon: Briefcase,
     links: [
-      { label: "Add Job", link: routeNames.general.addJob },
       { label: "Add Job Category", link: routeNames.general.addJobCategory },
-      { label: "View Jobs", link: routeNames.general.viewJobs },
       { label: "View Job Categories", link: routeNames.general.viewJobCategory },
+      { label: "Add Job", link: routeNames.general.addJob },
+      { label: "View Jobs", link: routeNames.general.viewJobs },
       { label: "Job Applications", link: routeNames.general.jobApplications },
     ],
   },
@@ -58,6 +60,8 @@ export const sidebarData = [
     links: [
       { label: "Add Team Member", link: routeNames.general.addTeam },
       { label: "View Team Members", link: routeNames.general.viewTeams },
+      { label: "View X-Team Members", link: routeNames.general.viewXTeams },
+
     ],
   },
   {
@@ -74,6 +78,14 @@ export const sidebarData = [
     links: [
       { label: "Add Testimonial", link: routeNames.general.addTestimonial },
       { label: "View Testimonial", link: routeNames.general.viewTestimonial },
+    ],
+  },
+  {
+    label: "Quotes",
+    icon: BrandBlogger,
+    links: [
+
+      { label: "View Quotes", link: routeNames.general.viewQuotes },
     ],
   },
   {

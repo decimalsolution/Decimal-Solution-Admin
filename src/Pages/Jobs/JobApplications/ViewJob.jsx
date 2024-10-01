@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 import {
   Anchor,
   Flex,
@@ -13,10 +15,10 @@ const ViewJob = ({ rowData }) => {
   const theme = useMantineTheme();
   return (
     <SimpleGrid cols={2} w={"100%"} p={"xl"}>
-      {/* <Title order={3}>Job Title</Title>
+      <Title order={3}>Job Title</Title>
       <Text fw={"bold"} color="purple" fz="xl" >
-        {rowData?.title}
-      </Text> */}
+        {rowData?.job?.title}
+      </Text>
       <Title order={3}>Applicant Name</Title>
       <Text align="justify">{rowData?.fullName}</Text>
       <Title order={3}>Applicant Email</Title>
@@ -69,3 +71,4 @@ const ViewJob = ({ rowData }) => {
   );
 };
 export default ViewJob;
+

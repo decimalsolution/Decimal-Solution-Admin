@@ -1,22 +1,43 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+
 import { ActionIcon, Flex, Tooltip } from "@mantine/core";
 import { showNotification } from "@mantine/notifications";
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
-import { Eye, Pencil, PencilOff, Trash, TrashOff } from "tabler-icons-react";
+import {
+  Eye,
+  Pencil,
+  PencilOff,
+  Trash,
+  TrashOff,
+  UserOff,
+} from "tabler-icons-react"; // Import UserOff icon
 import { routeNames } from "../../Routes/routeNames";
 import { backendUrl } from "../../constants/constants";
 import { UserContext } from "../../contexts/UserContext";
 import DeleteModal from "../DeleteModal";
 import ViewModal from "../ViewModal";
+import { Loader } from "@mantine/core";
 
-const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
+const ActionIcons = ({
+  rowData,
+  type,
+  edit,
+  view,
+  del,
+  viewData,
+  blocked,
+  left,
+}) => {
   const queryClient = useQueryClient();
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const [openDelete, setOpenDelete] = useState(false);
   const [openView, setOpenView] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   //to view
   const handleView = () => {
@@ -82,6 +103,14 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
           },
         });
         break;
+      case "Quote":
+        navigate(routeNames.general.viewQuotes, {
+          state: {
+            isUpdate: true,
+            data: rowData,
+          },
+        });
+        break;
     }
   };
 
@@ -99,7 +128,7 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
       onSuccess: (res) => {
         setOpenDelete(false);
         showNotification({
-          title: "success",
+          title: "Success",
           message: `${type} Deleted Successfully`,
           color: "green",
         });
@@ -112,7 +141,9 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
         else if (type === "teamMember")
           queryClient.invalidateQueries("fetchTeamMembers");
         else if (type === "blog") queryClient.invalidateQueries("fetchBlogs");
-        else if(type === "testimonial") queryClient.invalidateQueries("fetchTestimonials")
+        else if (type === "testimonial")
+          queryClient.invalidateQueries("fetchTestimonials");
+        else if (type === "quote") queryClient.invalidateQueries("fetchQuotes");
       },
       onError: (res) => {
         showNotification({
@@ -125,12 +156,47 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
     }
   );
 
+  // To toggle the 'left' status
+  const handleToggleLeft = useMutation(
+    async () => {
+      const link = backendUrl + `/api/v1/${type}/${rowData._id}/left`;
+      return axios.put(
+        link,
+        { left: !rowData.left }, // Toggle left status here
+        {
+          headers: {
+            authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
+    },
+    {
+      onSuccess: () => {
+        showNotification({
+          title: "Success",
+          message: `Team Member marked as ${
+            rowData.left ? "not left" : "left"
+          } successfully`, // Notification message toggles
+          color: "green",
+        });
+        queryClient.invalidateQueries("fetchTeamMembers");
+      },
+      onError: (res) => {
+        showNotification({
+          title: "Error",
+          message: res?.data?.message,
+          color: "red",
+        });
+      },
+    }
+  );
+
   return (
     <Flex gap={5}>
       {view && (
         <Tooltip label="View">
           <ActionIcon>
-            <Eye color={"green"} onClick={handleView} />
+            <Eye color={"green"} size={"4xl"} onClick={handleView} />
           </ActionIcon>
         </Tooltip>
       )}
@@ -152,16 +218,30 @@ const ActionIcons = ({ rowData, type, edit, view, del, viewData, blocked }) => {
           </ActionIcon>
         </Tooltip>
       )}
+      {left && (
+        <Tooltip label={rowData.left ? "Mark as Not Left" : "Mark as Left"}>
+          <ActionIcon
+            onClick={() => handleToggleLeft.mutate()}
+            disabled={blocked || isLoading}
+          >
+            {isLoading ? (
+              <Loader color={"orange"} size="sm" />
+            ) : (
+              <UserOff color={rowData.left ? "gray" : "orange"} />
+            )}
+          </ActionIcon>
+        </Tooltip>
+      )}
       <ViewModal
         opened={openView}
         setOpened={setOpenView}
-        title={`View ${type}`}
+        title={<span style={{ fontWeight: 'bold', color:'black', fontSize: '2rem' }}>{`View ${type}`}</span>}
       >
         {viewData}
       </ViewModal>
       <DeleteModal
         label={`Delete ${type}`}
-        message={`Are you sure you want to delete this ${type}. This Action is irreversible.`}
+        message={`Are you sure you want to delete this ${type}? This action is irreversible.`}
         opened={openDelete}
         onDelete={() => handleDelete.mutate()}
         setOpened={setOpenDelete}

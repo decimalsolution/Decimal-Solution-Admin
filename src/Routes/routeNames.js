@@ -15,10 +15,13 @@ export const routeNames = {
     jobApplications: "/job-applications",
     addTeam: "/add-team",
     viewTeams: "/view-teams",
+    viewXTeams: "/view-xteams",
+
     addBlog: "/add-blog",
     viewBlogs: "/view-blogs",
     addTestimonial: "/add-testimonial",
     viewTestimonial: "/view-testimonial",
+    viewQuotes: "/view-quotes",
     settings: "/settings",
     aboutUs: "/about-us",
   },
