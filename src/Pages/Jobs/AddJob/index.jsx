@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Container, Group, SimpleGrid } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import { showNotification } from "@mantine/notifications";
@@ -76,9 +77,9 @@ export const AddJob = () => {
 
   //categories
   const { status } = useQuery(
-    "fetchServices",
+    "fetchJobsCategory",
     () => {
-      return axios.get(backendUrl + "/api/v1/web/services");
+      return axios.get(backendUrl + "/api/v1/jobsCategory");
     },
     {
       onSuccess: (res) => {

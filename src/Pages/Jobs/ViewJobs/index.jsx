@@ -1,6 +1,6 @@
 import { Container, Grid } from "@mantine/core";
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import  { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import SelectMenu from "../../../components/SelectMenu";
 import { useStyles } from "../styles";

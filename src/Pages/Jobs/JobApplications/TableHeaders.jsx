@@ -82,10 +82,10 @@ export const Columns = [
       <ActionIcons
         rowData={row}
         view={true}
-        // del={true}
+        del={true}
         // edit={true}
         viewData={<ViewJob rowData={row} />}
-        type="Job Application"
+        type="Jobapplications"
       />
     ),
   },

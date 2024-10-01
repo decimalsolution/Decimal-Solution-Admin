@@ -1,6 +1,6 @@
 import { Container, Grid } from "@mantine/core";
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import SelectMenu from "../../../components/SelectMenu";
 import { useStyles } from "../styles";
@@ -23,9 +23,9 @@ const ViewJobCategory = () => {
   const [blockedFilter, setBlockedFilter] = useState(null);
 
   const { status } = useQuery(
-    "fetchJobs",
+    "fetchJobsCategory",
     () => {
-      return axios.get(backendUrl + "/api/v1/jobs", {
+      return axios.get(backendUrl + "/api/v1/jobsCategory", {
         headers: {
           authorization: `Bearer ${user.token}`,
         },
@@ -96,7 +96,7 @@ const ViewJobCategory = () => {
           columns={Columns}
           data={filteredItems}
           progressPending={status === "loading"}
-          type="jobs"
+          type="jobsCategory"
         />
       </Container>
     </Container>

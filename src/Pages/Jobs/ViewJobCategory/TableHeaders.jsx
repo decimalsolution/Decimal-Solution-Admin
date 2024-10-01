@@ -1,7 +1,6 @@
-import { Text } from "@mantine/core";
 import ActionIcons from "../../../components/ActionIcons";
 import StatusToggle from "../../../components/StatusToggle";
-import ViewJob from "./ViewJob";
+import ViewJobCategory from "./ViewJobCategory";
 
 export const Columns = [
   {
@@ -19,7 +18,7 @@ export const Columns = [
   },
   {
     name: "Description",
-    selector: (row) => row.title,
+    selector: (row) => row.description,
     sortable: true,
     // center: true,
     width: "400px",
@@ -34,8 +33,8 @@ export const Columns = [
       <StatusToggle
         status={row.blocked}
         id={row._id}
-        type={"jobs"}
-        queryName="fetchJobs"
+        type={"jobsCategory"}
+        queryName="fetchJobsCategory"
       />
     ),
   },
@@ -45,11 +44,12 @@ export const Columns = [
     cell: (row) => (
       <ActionIcons
         rowData={row}
-        view={true}
+
         del={true}
         edit={true}
-        viewData={<ViewJob rowData={row} />}
-        type="jobs"
+        view={true}
+        viewData={<ViewJobCategory rowData={row} />}
+        type="jobsCategory"
       />
     ),
   },

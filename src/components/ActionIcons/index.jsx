@@ -111,6 +111,14 @@ const ActionIcons = ({
           },
         });
         break;
+        case "jobsCategory":
+          navigate(routeNames.general.addJobCategory, {
+            state: {
+              isUpdate: true,
+              data: rowData,
+            },
+          });
+          break;
     }
   };
 
@@ -141,8 +149,8 @@ const ActionIcons = ({
         else if (type === "teamMember")
           queryClient.invalidateQueries("fetchTeamMembers");
         else if (type === "blog") queryClient.invalidateQueries("fetchBlogs");
-        else if (type === "testimonial")
-          queryClient.invalidateQueries("fetchTestimonials");
+        else if (type === "testimonial")queryClient.invalidateQueries("fetchTestimonials");
+        else if (type === "jobsCategory")queryClient.invalidateQueries("fetchJobsCategory");
         else if (type === "quote") queryClient.invalidateQueries("fetchQuotes");
       },
       onError: (res) => {

@@ -43,11 +43,11 @@ export const AddJobCategory = () => {
     }
   }, [state]);
 
-  const handleAddJob = useMutation(
+  const handleAddJobCategory = useMutation(
     (values) => {
       if (state?.isUpdate)
         return axios.patch(
-          `${backendUrl + `/api/v1/jobCategory/${state?.data?._id}`}`,
+          `${backendUrl + `/api/v1/jobsCategory/${state?.data?._id}`}`,
           values,
           {
             headers: {
@@ -56,7 +56,7 @@ export const AddJobCategory = () => {
           }
         );
       else
-        return axios.post(`${backendUrl + "/api/v1/jobs"}`, values, {
+        return axios.post(`${backendUrl + "/api/v1/jobsCategory"}`, values, {
           headers: {
             authorization: `Bearer ${user.token}`,
           },
@@ -70,7 +70,7 @@ export const AddJobCategory = () => {
             message: response?.data?.message,
             color: "green",
           });
-          navigate(routeNames.general.viewJobs);
+          navigate(routeNames.general.viewJobCategory);
           form.reset();
         } else {
           showNotification({
@@ -88,7 +88,7 @@ export const AddJobCategory = () => {
       <PageHeader
         label={state?.isUpdate ? "Edit Job Category" : "Add Job Category"}
       />
-      <form onSubmit={form.onSubmit((values) => handleAddJob.mutate(values))}>
+      <form onSubmit={form.onSubmit((values) => handleAddJobCategory.mutate(values))}>
         <SimpleGrid
           breakpoints={[
             { minWidth: "sm", cols: 1 },
@@ -120,7 +120,7 @@ export const AddJobCategory = () => {
           <Button
             label={state?.isUpdate ? "Edit Job Category" : "Add Job Category"}
             type={"submit"}
-            loading={handleAddJob.isLoading}
+            loading={handleAddJobCategory.isLoading}
           />
         </Group>
       </form>
