@@ -49,7 +49,7 @@ export default function TextEditorTinyMce({ form, validateName, label, required 
             "wordcount",
           ],
           toolbar:
-            "undo redo | styles | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            "undo redo | anchor | styles | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
           content_style: "body { font-family:Helvetica,Arial,sans-serif; font-size:14px }",
           images_upload_url: "https://firebasestorage.googleapis.com/v0/b/carflys-b1b57.appspot.com/o",
           automatic_uploads: true,
