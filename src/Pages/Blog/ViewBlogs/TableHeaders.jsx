@@ -98,6 +98,13 @@ export const Columns = [
     width: "250px",
   },
   {
+    name: "Author",
+    selector: (row) => row.authorName?.slice(0, 15),
+    sortable: true,
+    // center: true,
+    width: "250px",
+  },
+  {
     name: "Meta Description",
     // selector: (row) => row.blogDescription,
     selector: (row) =>  row?.metaDescription?.slice(0, 80) + "...",
