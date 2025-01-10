@@ -102,16 +102,12 @@ export const AddBlog = () => {
   const handleAddService = useMutation(
     (values) => {
       if (state?.isUpdate) {
-        return axios.patch(
-          `${backendUrl}/api/v1/blog/${state?.data?._id}`,
-          values,
-          {
-            headers: {
-              'Content-Type': "application/json",
-              Authorization: `Bearer ${user.token}`,
-            },
-          }
-        );
+        return axios.patch(`${backendUrl}/api/v1/blog/${state?.data?._id}`, values, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
+        });
       } else {
         return axios.post(`${backendUrl}/api/v1/blog`, values, {
           headers: {
@@ -144,9 +140,7 @@ export const AddBlog = () => {
   return (
     <Container fluid>
       <PageHeader label={state?.isUpdate ? "Edit Blog" : "Add Blog"} />
-      <form
-        onSubmit={form.onSubmit((values) => handleAddService.mutate(values))}
-      >
+      <form onSubmit={form.onSubmit((values) => handleAddService.mutate(values))}>
         <InputField
           label={"Title"}
           placeholder={"Enter Blog Title"}
@@ -221,12 +215,7 @@ export const AddBlog = () => {
         {/* <textarea name="" id=""></textarea> */}
 
         <Group position="center">
-          <DropZone
-            form={form}
-            folderName={"service"}
-            name={"blogImage"}
-            label="Cover Image"
-          />
+          <DropZone form={form} folderName={"service"} name={"blogImage"} label="Cover Image" />
           {/* <DropZone
             form={form}
             folderName={"service"}
@@ -235,13 +224,9 @@ export const AddBlog = () => {
           /> */}
         </Group>
         <Group position="right" mt={"md"}>
+          <Button label={"Cancel"} variant={"outline"} onClick={() => navigate(routeNames.general.viewBlogs)} />
           <Button
-            label={"Cancel"}
-            variant={"outline"}
-            onClick={() => navigate(routeNames.general.viewBlogs)}
-          />
-          <Button
-            label={state?.isUpdate ? "Edit Blog" : "Add Blog"}
+            label={state?.isUpdate ? "Update Blog" : "Add Blog"}
             type={"submit"}
             loading={handleAddService.isLoading}
           />
