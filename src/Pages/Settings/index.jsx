@@ -9,8 +9,9 @@ import { routeNames } from "../../Routes/routeNames";
 import Button from "../../components/Button";
 import PageHeader from "../../components/PageHeader";
 import PassInput from "../../components/PassInput";
-import { backendUrl } from "../../constants/constants";
 import { UserContext } from "../../contexts/UserContext";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 export const Settings = () => {
   const { user } = useContext(UserContext);
