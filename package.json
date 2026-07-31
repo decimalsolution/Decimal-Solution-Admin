@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
+    "dev": "node api.js && vite --host",
+    "build": "node api.js && vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
@@ -39,6 +39,7 @@
     "react-query": "^3.39.3",
     "react-router-dom": "^6.11.2",
     "react-tag-input-component": "^2.0.2",
+    "react-uuid": "^2.0.0",
     "tabler-icons-react": "^1.56.0",
     "tinymce": "^7.3.0"
   },
