@@ -13,9 +13,10 @@ import PageHeader from "../../../components/PageHeader";
 import SelectMenu from "../../../components/SelectMenu";
 import TextArea from "../../../components/TextArea";
 import Datepicker from "../../../components/Datepicker";
-import { backendUrl } from "../../../constants/constants";
 import { UserContext } from "../../../contexts/UserContext";
 import moment from "moment";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 export const AddJob = () => {
   const { user } = useContext(UserContext);

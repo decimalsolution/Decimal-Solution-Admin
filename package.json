@@ -39,6 +39,7 @@
     "react-query": "^3.39.3",
     "react-router-dom": "^6.11.2",
     "react-tag-input-component": "^2.0.2",
+    "react-uuid": "^2.0.0",
     "tabler-icons-react": "^1.56.0",
     "tinymce": "^7.3.0"
   },

@@ -10,14 +10,14 @@ import InputField from "../../../components/InputField";
 import TextArea from "../../../components/TextArea";
 import Button from "../../../components/Button";
 import PageHeader from "../../../components/PageHeader";
-import { backendUrl } from "../../../constants/constants";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import DropZone from "../../../components/Dropzone";
 import { useLocation, useNavigate } from "react-router";
 import { routeNames } from "../../../Routes/routeNames";
-// import SelectMenu from "../../../components/SelectMenu";
 import TinyMCEEditor from "./TinyMCEEditor";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 export const AddBlog = () => {
   const { user } = useContext(UserContext);
@@ -247,7 +247,6 @@ export const AddBlog = () => {
 // import TextArea from "../../../components/TextArea";
 // import Button from "../../../components/Button";
 // import PageHeader from "../../../components/PageHeader";
-// import { backendUrl } from "../../../constants/constants";
 // import { useContext, useEffect, useState } from "react";
 // import { UserContext } from "../../../contexts/UserContext";
 // import DropZone from "../../../components/Dropzone";
@@ -255,6 +254,8 @@ export const AddBlog = () => {
 // import { routeNames } from "../../../Routes/routeNames";
 // // import SelectMenu from "../../../components/SelectMenu";
 // import TinyMCEEditor from "./TinyMCEEditor";
+
+// const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 // export const AddBlog = () => {
 //   const { user } = useContext(UserContext);

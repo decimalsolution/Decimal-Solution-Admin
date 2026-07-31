@@ -7,12 +7,13 @@ import InputField from "../../../components/InputField";
 import TextArea from "../../../components/TextArea";
 import Button from "../../../components/Button";
 import PageHeader from "../../../components/PageHeader";
-import { backendUrl } from "../../../constants/constants";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../../contexts/UserContext";
 import DropZone from "../../../components/Dropzone";
 import { useLocation, useNavigate } from "react-router";
 import { routeNames } from "../../../Routes/routeNames";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 export const AddService = () => {
   const { user } = useContext(UserContext);

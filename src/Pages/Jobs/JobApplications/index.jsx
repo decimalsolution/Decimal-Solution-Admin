@@ -11,9 +11,10 @@
 // import InputField from "../../../components/InputField";
 // import Button from "../../../components/Button";
 // import { UserContext } from "../../../contexts/UserContext";
-// import { backendUrl } from "../../../constants/constants";
 // import { routeNames } from "../../../Routes/routeNames";
 // import { useNavigate } from "react-router";
+
+// const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 // const ViewJobApplications = () => {
 //   const { classes } = useStyles();
@@ -222,9 +223,10 @@ import DataGrid from "../../../components/Table";
 import InputField from "../../../components/InputField";
 import Button from "../../../components/Button";
 import { UserContext } from "../../../contexts/UserContext";
-import { backendUrl } from "../../../constants/constants";
 import { routeNames } from "../../../Routes/routeNames";
 import { useNavigate } from "react-router";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 const ViewJobApplications = () => {
   const { classes } = useStyles();

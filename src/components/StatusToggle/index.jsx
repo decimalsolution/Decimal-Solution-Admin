@@ -2,9 +2,10 @@ import { Badge, Loader, Menu } from "@mantine/core";
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useMutation, useQueryClient } from "react-query";
-import { backendUrl } from "../../constants/constants";
 import { UserContext } from "../../contexts/UserContext";
 import { showNotification } from "@mantine/notifications";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 const StatusToggle = ({ status, id, type, queryName }) => {
   const { user } = useContext(UserContext);
