@@ -2,7 +2,7 @@ import { ActionIcon, Box, Image, Loader, Text } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 import { useDropzone } from "react-dropzone";
 import { Paperclip, Photo, X } from "tabler-icons-react";
-import { uploadSingleFile } from "../../constants/firebase";
+import { uploadSingleFile } from "../../constants/cloudinary";
 import { useEffect, useState } from "react";
 
 export default function DropZone({ form, name, folderName, label }) {

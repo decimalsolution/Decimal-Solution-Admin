@@ -5,9 +5,10 @@ import Button from "../../../components/Button";
 import { useContext, useState } from "react";
 import { showNotification } from "@mantine/notifications";
 import axios from "axios";
-import { backendUrl } from "../../../constants/constants";
 import { useMutation } from "react-query";
 import { UserContext } from "../../../contexts/UserContext";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 const AddComment = ({ data }) => {
   const [open, setOpen] = useState(false);

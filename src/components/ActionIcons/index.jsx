@@ -16,11 +16,12 @@ import {
   UserOff,
 } from "tabler-icons-react"; // Import UserOff icon
 import { routeNames } from "../../Routes/routeNames";
-import { backendUrl } from "../../constants/constants";
 import { UserContext } from "../../contexts/UserContext";
 import DeleteModal from "../DeleteModal";
 import ViewModal from "../ViewModal";
 import { Loader } from "@mantine/core";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 const ActionIcons = ({
   rowData,
