@@ -5,7 +5,6 @@ import PassInput from "../../components/PassInput";
 import { useForm } from "@mantine/form";
 import Button from "../../components/Button";
 import axios from "axios";
-import { backendUrl } from "../../constants/constants";
 import { useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useMutation } from "react-query";
@@ -13,6 +12,8 @@ import { showNotification } from "@mantine/notifications";
 import { routeNames } from "../../Routes/routeNames";
 import { useNavigate } from "react-router";
 import { useStyles } from "./styles";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 export const Login = () => {
   const navigate = useNavigate();

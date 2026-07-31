@@ -10,8 +10,9 @@ import Button from "../../../components/Button";
 import InputField from "../../../components/InputField";
 import PageHeader from "../../../components/PageHeader";
 import TextArea from "../../../components/TextArea";
-import { backendUrl } from "../../../constants/constants";
 import { UserContext } from "../../../contexts/UserContext";
+
+const backendUrl = import.meta.env.VITE_PUBLIC_BACKEND_URL
 
 export const AddJobCategory = () => {
   const { user } = useContext(UserContext);
